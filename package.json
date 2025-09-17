@@ -11,7 +11,8 @@
     "lint:fix": "biome lint --write",
     "format": "biome format",
     "format:fix": "biome format --write",
-    "transifex:sync": "env-cmd --use-shell -- txjs-cli push app/ --token=\\$TRANSIFEX_TOKEN --secret=\\$TRANSIFEX_SECRET"
+    "transifex:sync": "env-cmd --use-shell -- txjs-cli push app/ --token=\\$TRANSIFEX_TOKEN --secret=\\$TRANSIFEX_SECRET",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-router/node": "7.9.1",
@@ -35,6 +36,7 @@
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "env-cmd": "^11.0.0",
+    "husky": "^9.1.7",
     "tailwindcss": "4.1.4",
     "typescript": "5.9.2",
     "vite": "6.3.3",
