@@ -6,25 +6,38 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write",
+    "format": "biome format",
+    "format:fix": "biome format --write",
+    "transifex:sync": "env-cmd --use-shell -- txjs-cli push app/ --token=\\$TRANSIFEX_TOKEN --secret=\\$TRANSIFEX_SECRET"
   },
   "dependencies": {
-    "@react-router/node": "^7.7.1",
-    "@react-router/serve": "^7.7.1",
-    "isbot": "^5.1.27",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router": "^7.7.1"
+    "@react-router/node": "7.9.1",
+    "@react-router/serve": "7.9.1",
+    "@sozialhelden/core": "2.2.3",
+    "@sozialhelden/ui": "1.4.0",
+    "@transifex/native": "^7.1.4",
+    "@transifex/react": "^7.1.4",
+    "isbot": "5.1.27",
+    "lucide-react": "0.542.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-router": "7.9.1"
   },
   "devDependencies": {
-    "@react-router/dev": "^7.7.1",
-    "@tailwindcss/vite": "^4.1.4",
-    "@types/node": "^20",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "tailwindcss": "^4.1.4",
-    "typescript": "^5.8.3",
-    "vite": "^6.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "@biomejs/biome": "2.2.0",
+    "@react-router/dev": "7.9.1",
+    "@tailwindcss/vite": "4.1.4",
+    "@transifex/cli": "^7.1.4",
+    "@types/node": "20",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "env-cmd": "^11.0.0",
+    "tailwindcss": "4.1.4",
+    "typescript": "5.9.2",
+    "vite": "6.3.3",
+    "vite-tsconfig-paths": "5.1.4"
   }
 }

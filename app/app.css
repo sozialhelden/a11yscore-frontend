@@ -1,15 +1,21 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: these are tailwind rules */
+
+/* Import fonts */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/400-italic.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/500-italic.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/600-italic.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/700-italic.css";
+
+/* Add tailwind itself and necessary addons */
 @import "tailwindcss";
+@import "tw-animate-css";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+/* Import tailwind config from ui library */
+@import "@sozialhelden/ui/style.css";
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
+/* Add ui library as source for class purging */
+@source "../node_modules/@sozialhelden/ui";
