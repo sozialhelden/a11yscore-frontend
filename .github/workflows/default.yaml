@@ -1,0 +1,48 @@
+name: ci
+on:
+  pull_request:
+  merge_group:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run format
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test:unit
+      - uses: sozialhelden/get-commit-status-target-url@v1
+        id: get_deployment_url
+        with:
+          github-token: ${{ secrets.ELEVATED_GITHUB_TOKEN }}
+      - env:
+          NITRO_TEST_BASE_URL: ${{ steps.get_deployment_url.outputs.target-url }}
+        run: npm run test:e2e
+
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build

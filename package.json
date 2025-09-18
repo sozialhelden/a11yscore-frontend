@@ -11,6 +11,9 @@
     "lint:fix": "biome lint --write",
     "format": "biome format",
     "format:fix": "biome format --write",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "echo 'no unit tests yet'",
+    "test:e2e": "echo 'no e2e tests yet'",
     "transifex:sync": "env-cmd --use-shell -- txjs-cli push app/ --token=\\$TRANSIFEX_TOKEN --secret=\\$TRANSIFEX_SECRET",
     "prepare": "husky"
   },
