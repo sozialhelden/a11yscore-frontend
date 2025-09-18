@@ -6,6 +6,7 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
+  route("health", "./routes/health.tsx"),
   layout("./layouts/default.tsx", [
     index("routes/home.tsx"),
     route("score/:region", "./routes/score.tsx"),
