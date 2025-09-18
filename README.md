@@ -1,87 +1,53 @@
-# Welcome to React Router!
+# a11yscore
 
-A modern, production-ready template for building full-stack React applications using React Router.
+> Web application to rate the accessibility of the physical world.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+# Getting started
 
-## Features
+## Set up the project
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
+**1. Clone the repository**
 ```bash
-npm install
+git clone https://github.com/sozialhelden/a11yscore-frontend.git
+cd a11yscore-frontend
 ```
 
-### Development
+**2. Install dependencies**
+```bash
+npm ci
+```
 
-Start the development server with HMR:
+**3. Create `.env` file**
+```bash
+cp .env.example .env
+```
 
+**4. Start the development server**
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Now you can open http://localhost:5173 in your browser to see the application running.
 
-## Building for Production
-
-Create a production build:
+## Useful commands
 
 ```bash
-npm run build
+# check the code for formatting errors
+npm run format
+
+# format the code
+npm run format:fix
+
+# lint the code
+npm run lint
+
+# lint the code and fix auto-fixable errors
+npm run lint:fix
+
+# run tests, make sure the development server is running
+npm run test
 ```
 
-## Deployment
+## License
 
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+MIT
