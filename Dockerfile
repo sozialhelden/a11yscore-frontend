@@ -35,7 +35,7 @@ COPY --from=build /app/package.json .
 
 # run the app
 EXPOSE 3000/tcp
-CMD ["npm", "run", "start"]
+CMD ["npm", "--loglevel", "verbose", "run", "start"]
 
 # check if the app is healthy
 HEALTHCHECK --interval=10s --timeout=3s --retries=1 --start-period=10s \
