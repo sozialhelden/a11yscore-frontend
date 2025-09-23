@@ -18,7 +18,7 @@ import { ArrowRight, Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate, useNavigation } from "react-router";
 import { z } from "zod";
-import { allowedRegions } from "~/config/regions";
+import { allowedAdminAreas } from "~/config";
 
 export function meta() {
   return [
@@ -39,7 +39,10 @@ export default function Home() {
   const isNavigating = Boolean(navigation.location);
 
   const formSchema = z.object({
-    region: z.enum(allowedRegions, t("Please select a valid region")),
+    region: z.enum(
+      Object.values(allowedAdminAreas).map(({ id }) => String(id)),
+      t("Please select a valid region"),
+    ),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -79,12 +82,12 @@ export default function Home() {
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder={"Select a region"} />
+                      <SelectValue placeholder={t("Select a region")} />
                     </SelectTrigger>
                     <SelectContent>
-                      {allowedRegions.map((region) => (
-                        <SelectItem key={region} value={region}>
-                          {region}
+                      {allowedAdminAreas.map(({ id, name }) => (
+                        <SelectItem key={id} value={String(id)}>
+                          {name}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -95,7 +98,7 @@ export default function Home() {
             )}
           />
           <Button type="submit" disabled={isNavigating}>
-            {"Calculate a11y-Score"}
+            <T _str="Calculate a11y-Score" />
             {isNavigating && (
               <div className="">
                 <Loader className="animate animate-spin" />

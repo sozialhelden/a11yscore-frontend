@@ -13,8 +13,8 @@ export default function Layout() {
           <T _str="a11y-Score" />
         </h1>
       </header>
-      <main className="grid grid-cols-1 place-items-center px-10">
-        <div className="max-w-[800px]">
+      <main className="grid auto-cols-1 place-items-center px-10">
+        <div className="max-w-[800px] md:min-w-[600px] lg:min-w-[800px]">
           <Outlet />
         </div>
       </main>

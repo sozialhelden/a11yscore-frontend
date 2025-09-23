@@ -9,6 +9,6 @@ export default [
   route("health", "./routes/health.tsx"),
   layout("./layouts/default.tsx", [
     index("routes/home.tsx"),
-    route("score/:region", "./routes/score.tsx"),
+    route("score/:adminAreaId", "./routes/score/index.tsx"),
   ]),
 ] satisfies RouteConfig;
