@@ -21,7 +21,7 @@
     "@react-router/node": "7.9.1",
     "@react-router/serve": "7.9.1",
     "@sozialhelden/core": "2.2.3",
-    "@sozialhelden/ui": "1.4.1",
+    "@sozialhelden/ui": "1.5.0",
     "@transifex/native": "7.1.4",
     "@transifex/react": "7.1.4",
     "isbot": "5.1.30",
