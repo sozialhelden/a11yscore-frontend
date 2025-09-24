@@ -22,6 +22,7 @@ export type TopicScoreResult = ScoreResult & {
   criteria: CriterionScoreResult[];
 };
 export type SubCategoryScoreResult = ScoreResult & {
+  description?: string;
   topics: TopicScoreResult[];
 };
 export type TopLevelCategoryScoreResult = ScoreResult & {
