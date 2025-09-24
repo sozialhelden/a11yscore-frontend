@@ -61,7 +61,7 @@ export default function Home() {
 
   return (
     <div className="space-y-12 py-12">
-      <h2 className="text-5xl leading-normal font-bold">
+      <h2 className="text-4xl md:text-5xl leading-normal font-bold">
         <T _str="Compare your region" />
       </h2>
 
@@ -70,7 +70,10 @@ export default function Home() {
       </p>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-6">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col md:flex-row gap-6"
+        >
           <FormField
             control={form.control}
             name="region"

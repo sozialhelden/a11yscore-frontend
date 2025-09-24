@@ -59,15 +59,15 @@ export default function ScorePage() {
             <ArrowLeft aria-hidden />
           </Link>
         </Button>
-        <h2 className="text-4xl font-medium">
+        <h2 className="text-2xl md:text-4xl font-medium">
           <T _str="a11y-Score for {region}" region={score.name} />
         </h2>
       </div>
       <div>
-        <h3 className="font-medium text-2xl mb-6">
+        <h3 className="font-medium text-xl md:text-2xl mb-6">
           <T _str="Overview" />
         </h3>
-        <div className="text-md mb-2 flex justify-between">
+        <div className="text-sm md:text-md mb-2 flex justify-between">
           <span>
             <T _str="Overall score" />
           </span>
@@ -81,7 +81,7 @@ export default function ScorePage() {
         </div>
         <Progress value={score.score} max={100} />
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         {score.toplevelCategories.map((toplevelCategory) => (
           <ScoreCard
             key={toplevelCategory.name}
