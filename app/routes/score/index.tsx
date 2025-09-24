@@ -26,6 +26,7 @@ export type SubCategoryScoreResult = ScoreResult & {
   topics: TopicScoreResult[];
 };
 export type TopLevelCategoryScoreResult = ScoreResult & {
+  interpretation: string;
   subCategories: SubCategoryScoreResult[];
 };
 

@@ -56,7 +56,9 @@ export function ScoreCard({
           </div>
           <div className="flex gap-6 text-sm md:text-base">
             <Score score={toplevelCategory.score} />
-            <span>Lorem Ipsum dolor sit amet</span>
+            <span className="text-gray-600">
+              {toplevelCategory.interpretation}
+            </span>
           </div>
         </CardContent>
         <CollapsibleContent>
