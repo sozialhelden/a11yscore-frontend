@@ -14,6 +14,10 @@ export const allowedAdminAreas: AdminArea[] = [
     name: "Berlin",
   },
   {
+    id: -62581,
+    name: "Darmstadt",
+  },
+  {
     id: -62400,
     name: "Frankfurt am Main",
   },
