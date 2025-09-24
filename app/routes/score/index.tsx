@@ -1,6 +1,12 @@
-import { Button, Progress } from "@sozialhelden/ui";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Button,
+  Progress,
+} from "@sozialhelden/ui";
 import { T, useT } from "@transifex/react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, TriangleAlert } from "lucide-react";
 import { Link, useLoaderData } from "react-router";
 import { ScoreCard } from "~/components/ScoreCard";
 import { i18nContext } from "~/context";
@@ -63,6 +69,15 @@ export default function ScorePage() {
           <T _str="a11y-Score for {region}" region={score.name} />
         </h2>
       </div>
+      <Alert>
+        <AlertTitle className="flex gap-2 items-center">
+          <TriangleAlert size={16} />
+          <T _str="Beta Warning!" />
+        </AlertTitle>
+        <AlertDescription>
+          <T _str="This application is in early beta and still in heavy development. The current scores may be incomplete and inaccurate." />
+        </AlertDescription>
+      </Alert>
       <div>
         <h3 className="font-medium text-xl md:text-2xl mb-6">
           <T _str="Overview" />
