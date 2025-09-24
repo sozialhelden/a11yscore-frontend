@@ -81,18 +81,23 @@ export function ScoreCard({
                       <DialogHeader>
                         <DialogTitle>{subCategory.name}</DialogTitle>
                         <DialogDescription>
-                          <T
-                            _str="The score for {subCategory} is calculated using these criteria. {moreInfoLink}"
-                            subCategory={subCategory.name}
-                            moreInfoLink={
-                              <Link
-                                to="/how"
-                                className="underline hover:text-primary"
-                              >
-                                <T _str="Learn more about how we calculate scores." />
-                              </Link>
-                            }
-                          />
+                          {subCategory.description && (
+                            <p>{subCategory.description}</p>
+                          )}
+                          <p>
+                            <T
+                              _str="The score for {subCategory} is calculated using these criteria. {moreInfoLink}"
+                              subCategory={subCategory.name}
+                              moreInfoLink={
+                                <Link
+                                  to="/how"
+                                  className="underline hover:text-primary"
+                                >
+                                  <T _str="Learn more about how we calculate scores." />
+                                </Link>
+                              }
+                            />
+                          </p>
                         </DialogDescription>
                       </DialogHeader>
                       <ScrollArea className="max-h-[70vh] -mx-4 -mb-6">
