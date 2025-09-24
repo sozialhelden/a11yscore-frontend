@@ -62,84 +62,88 @@ export function ScoreCard({
         <CollapsibleContent>
           <div className="mt-6 pt-4 border-t">
             <CardContent className="space-y-2">
-              {toplevelCategory.subCategories.map((subCategory) => (
-                <div
-                  key={subCategory.name}
-                  className="flex gap-4 justify-between items-center"
-                >
-                  <div className="flex gap-4 items-center">
-                    <Score score={subCategory.score} size="sm" />
-                    {subCategory.name}
-                  </div>
-                  <Dialog>
-                    <DialogTrigger>
-                      <Button size="icon" variant="ghost">
-                        <CircleQuestionMark />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <ScrollArea className="max-h-[70vh] -mx-[20px] -my-6">
-                        <div className="px-6 py-6">
-                          <DialogHeader>
-                            <DialogTitle>{subCategory.name}</DialogTitle>
-                            <DialogDescription className="space-y-2">
-                              {subCategory.description && (
-                                <p>{subCategory.description}</p>
-                              )}
-                              <p>
-                                <T
-                                  _str="The score for {subCategory} is calculated using these criteria. {moreInfoLink}"
-                                  subCategory={subCategory.name}
-                                  moreInfoLink={
-                                    <Link
-                                      to="/how"
-                                      className="underline hover:text-primary"
-                                    >
-                                      <T _str="Learn more about how we calculate scores." />
-                                    </Link>
-                                  }
-                                />
-                              </p>
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="space-y-8 mt-8">
-                            {subCategory.topics.map((topic) => (
-                              <div key={topic.name} className="">
-                                <h4 className="font-medium mb-2">
-                                  {topic.name}
-                                </h4>
-                                <ul className="space-y-2">
-                                  {topic.criteria.map((criterion) => (
-                                    <li
-                                      key={criterion.name}
-                                      className="flex gap-2 items-center"
-                                    >
-                                      <Tooltip>
-                                        <TooltipTrigger>
-                                          <Score
-                                            score={criterion.score}
-                                            size="sm"
-                                          />
-                                        </TooltipTrigger>
-                                        {criterion.name}
-                                        {criterion.score === 0 && (
-                                          <TooltipContent>
-                                            <T _str="Not enough data to calculate a score" />
-                                          </TooltipContent>
-                                        )}
-                                      </Tooltip>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
+              {toplevelCategory.subCategories
+                .sort((a, b) => b.score - a.score)
+                .map((subCategory) => (
+                  <div
+                    key={subCategory.name}
+                    className="flex gap-4 justify-between items-center"
+                  >
+                    <div className="flex gap-4 items-center">
+                      <Score score={subCategory.score} size="sm" />
+                      {subCategory.name}
+                    </div>
+                    <Dialog>
+                      <DialogTrigger>
+                        <Button size="icon" variant="ghost">
+                          <CircleQuestionMark />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <ScrollArea className="max-h-[70vh] -mx-[20px] -my-6">
+                          <div className="px-6 py-6">
+                            <DialogHeader>
+                              <DialogTitle>{subCategory.name}</DialogTitle>
+                              <DialogDescription className="space-y-2 mt-3">
+                                {subCategory.description && (
+                                  <p className="border-b pb-4 mb-4 border-gray-300">
+                                    {subCategory.description}
+                                  </p>
+                                )}
+                                <p>
+                                  <T
+                                    _str="The score for {subCategory} is calculated using these criteria. {moreInfoLink}"
+                                    subCategory={subCategory.name}
+                                    moreInfoLink={
+                                      <Link
+                                        to="/how"
+                                        className="underline hover:text-primary"
+                                      >
+                                        <T _str="Learn more about how we calculate scores." />
+                                      </Link>
+                                    }
+                                  />
+                                </p>
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="space-y-8 mt-8">
+                              {subCategory.topics.map((topic) => (
+                                <div key={topic.name} className="">
+                                  <h4 className="font-medium mb-2">
+                                    {topic.name}
+                                  </h4>
+                                  <ul className="space-y-2">
+                                    {topic.criteria.map((criterion) => (
+                                      <li
+                                        key={criterion.name}
+                                        className="flex gap-2 items-center"
+                                      >
+                                        <Tooltip>
+                                          <TooltipTrigger>
+                                            <Score
+                                              score={criterion.score}
+                                              size="sm"
+                                            />
+                                          </TooltipTrigger>
+                                          {criterion.name}
+                                          {criterion.score === 0 && (
+                                            <TooltipContent>
+                                              <T _str="Not enough data to calculate a score" />
+                                            </TooltipContent>
+                                          )}
+                                        </Tooltip>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      </ScrollArea>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              ))}
+                        </ScrollArea>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+                ))}
             </CardContent>
           </div>
         </CollapsibleContent>
