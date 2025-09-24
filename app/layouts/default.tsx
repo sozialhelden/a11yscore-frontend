@@ -7,18 +7,23 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen grid grid-cols-1 grid-rows-[auto_1fr_auto]">
-      <header className="border-b border-gray-200 px-10 flex items-center h-[80px]">
-        <h1 className="text-xl font-bold flex gap-4 items-center">
+      <header className="border-b border-gray-200 px-4 md:px-10 flex items-center h-[80px]">
+        <h1 className="text-xl font-bold flex gap-4 items-center relative">
           <Star />
           <T _str="a11y-Score" />
+          <span className="bg-gray-200 text-gray-900 leading-[10px] text-[10px] font-bold uppercase tracking-widest pl-1 pr-0.5 pt-0.5 pb-0.25 rounded absolute top-full right-0">
+            <T _str="beta" />
+          </span>
         </h1>
       </header>
-      <main className="grid auto-cols-1 place-items-center px-10">
-        <div className="max-w-[800px] md:min-w-[600px] lg:min-w-[800px]">
-          <Outlet />
+      <main className="grid items-center px-4 md:px-10">
+        <div className="w-full">
+          <div className="max-w-[800px] mx-auto">
+            <Outlet />
+          </div>
         </div>
       </main>
-      <footer className=" bg-gray-100 px-10 py-6 flex flex-col md:flex-row md:items-end gap-8 justify-between text-sm">
+      <footer className=" bg-gray-100 px-4 md:px-10 py-6 flex flex-col md:flex-row md:items-end gap-8 justify-between text-sm">
         <nav className="order-2 md:order-1">
           <ul className="flex gap-6">
             <li>

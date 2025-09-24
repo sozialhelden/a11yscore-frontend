@@ -15,6 +15,7 @@ import { i18nMiddleware } from "~/middleware/i18n";
 import type { Route } from "./+types/root";
 
 import "./app.css";
+import { TooltipProvider } from "@sozialhelden/ui";
 
 export const middleware: Route.MiddlewareFunction[] = [i18nMiddleware];
 
@@ -67,13 +68,15 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {isLoading ? (
-          <div className="fixed inset-0 bg-white flex items-center justify-center z-[2000]">
-            <LoaderCircle size={30} className="animate animate-spin" />
-          </div>
-        ) : (
-          <Outlet />
-        )}
+        <TooltipProvider>
+          {isLoading ? (
+            <div className="fixed inset-0 bg-white flex items-center justify-center z-[2000]">
+              <LoaderCircle size={30} className="animate animate-spin" />
+            </div>
+          ) : (
+            <Outlet />
+          )}
+        </TooltipProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
