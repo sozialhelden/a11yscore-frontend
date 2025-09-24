@@ -78,58 +78,62 @@ export function ScoreCard({
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>{subCategory.name}</DialogTitle>
-                        <DialogDescription>
-                          {subCategory.description && (
-                            <p>{subCategory.description}</p>
-                          )}
-                          <p>
-                            <T
-                              _str="The score for {subCategory} is calculated using these criteria. {moreInfoLink}"
-                              subCategory={subCategory.name}
-                              moreInfoLink={
-                                <Link
-                                  to="/how"
-                                  className="underline hover:text-primary"
-                                >
-                                  <T _str="Learn more about how we calculate scores." />
-                                </Link>
-                              }
-                            />
-                          </p>
-                        </DialogDescription>
-                      </DialogHeader>
-                      <ScrollArea className="max-h-[70vh] -mx-4 -mb-6">
-                        <div className="space-y-8 px-4 pb-6 mt-2">
-                          {subCategory.topics.map((topic) => (
-                            <div key={topic.name} className="">
-                              <h4 className="font-medium mb-2">{topic.name}</h4>
-                              <ul className="space-y-2">
-                                {topic.criteria.map((criterion) => (
-                                  <li
-                                    key={criterion.name}
-                                    className="flex gap-2 items-center"
-                                  >
-                                    <Tooltip>
-                                      <TooltipTrigger>
-                                        <Score
-                                          score={criterion.score}
-                                          size="sm"
-                                        />
-                                      </TooltipTrigger>
-                                      {criterion.name}
-                                      {criterion.score === 0 && (
-                                        <TooltipContent>
-                                          <T _str="Not enough data to calculate a score" />
-                                        </TooltipContent>
-                                      )}
-                                    </Tooltip>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
+                      <ScrollArea className="max-h-[70vh] -mx-[20px] -my-6">
+                        <div className="px-6 py-6">
+                          <DialogHeader>
+                            <DialogTitle>{subCategory.name}</DialogTitle>
+                            <DialogDescription className="space-y-2">
+                              {subCategory.description && (
+                                <p>{subCategory.description}</p>
+                              )}
+                              <p>
+                                <T
+                                  _str="The score for {subCategory} is calculated using these criteria. {moreInfoLink}"
+                                  subCategory={subCategory.name}
+                                  moreInfoLink={
+                                    <Link
+                                      to="/how"
+                                      className="underline hover:text-primary"
+                                    >
+                                      <T _str="Learn more about how we calculate scores." />
+                                    </Link>
+                                  }
+                                />
+                              </p>
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="space-y-8 mt-8">
+                            {subCategory.topics.map((topic) => (
+                              <div key={topic.name} className="">
+                                <h4 className="font-medium mb-2">
+                                  {topic.name}
+                                </h4>
+                                <ul className="space-y-2">
+                                  {topic.criteria.map((criterion) => (
+                                    <li
+                                      key={criterion.name}
+                                      className="flex gap-2 items-center"
+                                    >
+                                      <Tooltip>
+                                        <TooltipTrigger>
+                                          <Score
+                                            score={criterion.score}
+                                            size="sm"
+                                          />
+                                        </TooltipTrigger>
+                                        {criterion.name}
+                                        {criterion.score === 0 && (
+                                          <TooltipContent>
+                                            <T _str="Not enough data to calculate a score" />
+                                          </TooltipContent>
+                                        )}
+                                      </Tooltip>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </ScrollArea>
                     </DialogContent>
