@@ -46,7 +46,7 @@ export default function Layout() {
         </nav>
         <div className="flex gap-12 text-gray-500 order-1 md:order-2">
           <a
-            className="flex flex-col gap-2 hover:border-primary border-transparent border-2 rounded-xl p-2"
+            className="flex flex-col gap-2 py-2 px-3 hover:text-primary hover:bg-primary/10 rounded"
             href="https://www.sozialhelden.de/"
             target="_blank"
             rel="noopener"
@@ -55,18 +55,18 @@ export default function Layout() {
             <img
               src="/images/sozialhelden-logo.svg"
               alt={t("Sozialhelden e.V.")}
-              className="w-36"
+              className="w-40"
             />
           </a>
           <a
-            className="flex flex-col gap-2 hover:border-primary border-transparent border-2 rounded-xl p-2"
+            className="flex flex-col gap-2 py-2 px-3 hover:text-primary hover:bg-primary/10 rounded"
             href="https://www.bmv.de"
             target="_blank"
             rel="noopener"
           >
             <T _str="Funded by" />
             <img
-              src="/images/bmv-logo.png"
+              src="/images/bmv-logo.svg"
               alt={t("Federal Ministry of Transport")}
               className="w-36"
             />
