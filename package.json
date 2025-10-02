@@ -26,8 +26,8 @@
     "@transifex/react": "7.1.4",
     "isbot": "5.1.31",
     "lucide-react": "0.544.0",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "react-router": "7.9.3"
   },
   "devDependencies": {
@@ -36,8 +36,8 @@
     "@tailwindcss/vite": "4.1.14",
     "@transifex/cli": "7.1.4",
     "@types/node": "22.18.8",
-    "@types/react": "19.1.15",
-    "@types/react-dom": "19.1.9",
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
     "env-cmd": "11.0.0",
     "husky": "9.1.7",
     "tailwindcss": "4.1.14",
