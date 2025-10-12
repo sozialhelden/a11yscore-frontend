@@ -18,8 +18,8 @@
     "postinstall": "husky"
   },
   "dependencies": {
-    "@react-router/node": "7.9.3",
-    "@react-router/serve": "7.9.3",
+    "@react-router/node": "7.9.4",
+    "@react-router/serve": "7.9.4",
     "@sozialhelden/core": "2.2.3",
     "@sozialhelden/ui": "1.5.0",
     "@transifex/native": "7.1.4",
@@ -28,11 +28,11 @@
     "lucide-react": "0.544.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-router": "7.9.3"
+    "react-router": "7.9.4"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
-    "@react-router/dev": "7.9.3",
+    "@react-router/dev": "7.9.4",
     "@tailwindcss/vite": "4.1.14",
     "@transifex/cli": "7.1.4",
     "@types/node": "22.18.10",
