@@ -9,7 +9,7 @@ import { T, useT } from "@transifex/react";
 import { ArrowLeft, TriangleAlert } from "lucide-react";
 import { Link, useLoaderData } from "react-router";
 import { ScoreCard } from "~/components/ScoreCard";
-import { apiFetch } from "~/utils/api";
+import { i18nContext } from "~/context";
 import type { Route } from "./+types/index";
 
 // TODO: add spec first workflow and generate types by the openapi spec
