@@ -1,16 +1,15 @@
-import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { NavLink, type NavLinkProps } from "react-router";
 
-export default function FaqLink({
+export default function FooterLink({
   to,
   children,
 }: {
   to: NavLinkProps["to"];
-  children?: ReactNode;
+  children: ReactNode;
 }) {
   const defaultClassNames =
-    "font-medium inline-flex items-center gap-2 hover:underline hover:text-primary px-2 py-1 rounded";
+    "underline text-gray-500 hover:text-primary inline-block px-2 py-0.5 rounded";
 
   return (
     <NavLink
@@ -19,7 +18,6 @@ export default function FaqLink({
         `${defaultClassNames}${isActive ? " bg-primary/10" : ""}`
       }
     >
-      <ArrowRight size={16} aria-hidden />
       {children}
     </NavLink>
   );

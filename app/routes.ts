@@ -12,7 +12,7 @@ export default [
     index("routes/home.tsx"),
     route("score/:adminAreaId", "./routes/score/index.tsx"),
 
-    layout("./layouts/faq.tsx", [
+    layout("./layouts/static-page.tsx", [
       ...prefix("faqs", [
         route("/what-is-a11y-score", "./routes/faqs/what.tsx"),
         route("/how-is-it-calculated", "./routes/faqs/calculation.tsx"),
@@ -21,6 +21,7 @@ export default [
         route("/how-to-contribute", "./routes/faqs/contribute.tsx"),
         route("/give-feedback", "./routes/faqs/feedback.tsx"),
       ]),
+      route("/legal", "./routes/pages/legal.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig;

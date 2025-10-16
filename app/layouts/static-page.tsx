@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { NavLink, Outlet } from "react-router";
 import FaqLinks from "~/components/FaqLinks";
 
-export default function FaqLayout() {
+export default function StaticPageLayout() {
   return (
     <div className="space-y-8 py-12">
       <Button asChild variant="secondary">
