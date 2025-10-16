@@ -6,12 +6,14 @@ import dataDe from "../../content/de/faqs/data.md?raw";
 import feedbackDe from "../../content/de/faqs/feedback.md?raw";
 import scoreDe from "../../content/de/faqs/score.md?raw";
 import whatDe from "../../content/de/faqs/what.md?raw";
+import legalDe from "../../content/de/pages/legal.md?raw";
 import calculationEn from "../../content/en/faqs/calculation.md?raw";
 import contributeEn from "../../content/en/faqs/contribute.md?raw";
 import dataEn from "../../content/en/faqs/data.md?raw";
 import feedbackEn from "../../content/en/faqs/feedback.md?raw";
 import scoreEn from "../../content/en/faqs/score.md?raw";
 import whatEn from "../../content/en/faqs/what.md?raw";
+import legalEn from "../../content/en/pages/legal.md?raw";
 
 export type MarkdownDocument =
   | "faqs/calculation"
@@ -19,7 +21,8 @@ export type MarkdownDocument =
   | "faqs/data"
   | "faqs/feedback"
   | "faqs/score"
-  | "faqs/what";
+  | "faqs/what"
+  | "pages/legal";
 
 const content: Record<
   MarkdownDocument,
@@ -48,6 +51,10 @@ const content: Record<
   "faqs/what": {
     en: whatEn,
     de: whatDe,
+  },
+  "pages/legal": {
+    en: legalEn,
+    de: legalDe,
   },
 };
 

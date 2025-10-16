@@ -1,6 +1,7 @@
 import { T, useT } from "@transifex/react";
 import { Star } from "lucide-react";
 import { NavLink, Outlet } from "react-router";
+import FooterLink from "~/components/FooterLink";
 
 export default function Layout() {
   const t = useT();
@@ -29,20 +30,14 @@ export default function Layout() {
         <nav className="order-2 md:order-1">
           <ul className="flex gap-6">
             <li>
-              <NavLink
-                to="/legal"
-                className="underline text-gray-500 hover:text-primary"
-              >
+              <FooterLink to="/legal">
                 <T _str="Legal notice" />
-              </NavLink>
+              </FooterLink>
             </li>
             <li>
-              <NavLink
-                to="/privacy"
-                className="underline text-gray-500 hover:text-primary"
-              >
+              <FooterLink to="https://www.sozialhelden.de/legal/datenschutz">
                 <T _str="Privacy policy" />
-              </NavLink>
+              </FooterLink>
             </li>
           </ul>
         </nav>
