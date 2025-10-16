@@ -19,3 +19,6 @@
 
 /* Add ui library as source for class purging */
 @source "../node_modules/@sozialhelden/ui";
+
+/* Add plugins */
+@plugin "@tailwindcss/typography";
