@@ -13,7 +13,7 @@ import { i18nContext } from "~/context";
 import type { Route } from "./+types/index";
 
 // TODO: add spec first workflow and generate types by the openapi spec
-type ScoreResult = {
+export type ScoreResult = {
   score: number;
   name: string;
 };
@@ -29,7 +29,6 @@ export type TopLevelCategoryScoreResult = ScoreResult & {
   interpretation: string;
   subCategories: SubCategoryScoreResult[];
 };
-
 export type Results = {
   score: {
     score: number;
@@ -45,7 +44,7 @@ export async function loader({
   const { languageTag } = context.get(i18nContext);
 
   const response = await fetch(
-    `${process.env.API_BASE_URL}/v1/scores/${adminAreaId}?lang=${languageTag}`,
+    `${process.env.API_BASE_URL}/a11yscore/v1/scores/${adminAreaId}?lang=${languageTag}`,
   );
   if (!response.ok) {
     throw new Response("Failed to fetch score data", {

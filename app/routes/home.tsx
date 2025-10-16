@@ -11,13 +11,13 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  VisuallyHidden,
 } from "@sozialhelden/ui";
 import { T, useT } from "@transifex/react";
-import { ArrowRight, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { NavLink, useNavigate, useNavigation } from "react-router";
+import { useNavigate, useNavigation } from "react-router";
 import { z } from "zod";
+import FaqLinks from "~/components/FaqLinks";
 import { allowedAdminAreas } from "~/config";
 
 export function meta() {
@@ -111,51 +111,7 @@ export default function Home() {
         </form>
       </Form>
 
-      <VisuallyHidden>
-        <h2>
-          <T _str="FAQ" />
-        </h2>
-      </VisuallyHidden>
-      <nav className="mt-24 font-medium">
-        <ul className="space-y-4">
-          <li>
-            <NavLink
-              to="/what"
-              className="flex items-center gap-2 hover:underline hover:text-primary"
-            >
-              <ArrowRight size={16} aria-hidden />
-              <T _str="What is a11y-Score?" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/how"
-              className="flex items-center gap-2 hover:underline hover:text-primary"
-            >
-              <ArrowRight size={16} aria-hidden />
-              <T _str="How is it calculated?" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/data"
-              className="flex items-center gap-2 hover:underline hover:text-primary"
-            >
-              <ArrowRight size={16} aria-hidden />
-              <T _str="What data do you use?" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/feedback"
-              className="flex items-center gap-2 hover:underline hover:text-primary"
-            >
-              <ArrowRight size={16} aria-hidden />
-              <T _str="Give feedback" />
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+      <FaqLinks className="mt-24" />
     </div>
   );
 }
