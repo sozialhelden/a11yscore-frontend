@@ -16,8 +16,12 @@ import type { Route } from "./+types/root";
 
 import "./app.css";
 import { TooltipProvider } from "@sozialhelden/ui";
+import { devOverwritesMiddleware } from "~/middleware/dev-overwrites";
 
-export const middleware: Route.MiddlewareFunction[] = [i18nMiddleware];
+export const middleware: Route.MiddlewareFunction[] = [
+  i18nMiddleware,
+  devOverwritesMiddleware,
+];
 
 export async function loader({ context }: Route.LoaderArgs) {
   return { ...context.get(i18nContext), token: process.env.TRANSIFEX_TOKEN };
