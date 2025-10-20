@@ -11,6 +11,7 @@ import { T } from "@transifex/react";
 import { useLoaderData } from "react-router";
 import OSMTag from "~/components/OSMTag";
 import { i18nContext } from "~/context";
+import { apiFetch } from "~/utils/api";
 import { loadMarkdownDocument } from "~/utils/content";
 import type { Route } from "./+types/data";
 
@@ -43,21 +44,12 @@ export type OsmTagsUsed = {
 export async function loader({ context }: Route.LoaderArgs) {
   const { languageTag } = context.get(i18nContext);
 
-  const response = await fetch(
-    `${process.env.API_BASE_URL}/a11yscore/v1/osm-tags/?lang=${languageTag}`,
-  );
-  if (!response.ok) {
-    throw new Response("Failed to fetch osm-tag data", {
-      status: response.status,
-    });
-  }
-
   return {
     content: await loadMarkdownDocument(
       "faqs/data",
       languageTag as LanguageTag,
     ),
-    data: (await response.json()) as OsmTagsUsed,
+    data: await apiFetch<OsmTagsUsed>(context, "v1/osm-tags"),
   };
 }
 
