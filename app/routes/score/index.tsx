@@ -9,7 +9,7 @@ import { T, useT } from "@transifex/react";
 import { ArrowLeft, TriangleAlert } from "lucide-react";
 import { Link, useLoaderData } from "react-router";
 import { ScoreCard } from "~/components/ScoreCard";
-import { i18nContext } from "~/context";
+import { apiFetch } from "~/utils/api";
 import type { Route } from "./+types/index";
 
 // TODO: add spec first workflow and generate types by the openapi spec
@@ -41,17 +41,7 @@ export async function loader({
   params: { adminAreaId },
   context,
 }: Route.LoaderArgs) {
-  const { languageTag } = context.get(i18nContext);
-
-  const response = await fetch(
-    `${process.env.API_BASE_URL}/a11yscore/v1/scores/${adminAreaId}?lang=${languageTag}`,
-  );
-  if (!response.ok) {
-    throw new Response("Failed to fetch score data", {
-      status: response.status,
-    });
-  }
-  return (await response.json()) as Results;
+  return await apiFetch<Results>(context, `v1/scores/${adminAreaId}`);
 }
 
 export default function ScorePage() {
