@@ -2,14 +2,17 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-  Button,
   Progress,
 } from "@sozialhelden/ui";
 import { T, useT } from "@transifex/react";
-import { ArrowLeft, TriangleAlert } from "lucide-react";
-import { Link, useLoaderData } from "react-router";
+import DOMPurify from "dompurify";
+import { ArrowRight, Meh, Smile, TriangleAlert } from "lucide-react";
+import { NavLink, useLoaderData } from "react-router";
+import Main from "~/components/Main";
+import Meter from "~/components/Meter";
 import { ScoreCard } from "~/components/ScoreCard";
-import { i18nContext } from "~/context";
+import { apiFetch } from "~/utils/api";
+import { getImage, type WikimediaImage } from "~/utils/wikidata";
 import type { Route } from "./+types/index";
 
 // TODO: add spec first workflow and generate types by the openapi spec
@@ -33,6 +36,7 @@ export type Results = {
   score: {
     score: number;
     name: string;
+    createdAt: string;
     toplevelCategories: TopLevelCategoryScoreResult[];
   };
 };
@@ -41,60 +45,104 @@ export async function loader({
   params: { adminAreaId },
   context,
 }: Route.LoaderArgs) {
-  return await apiFetch<Results>(context, `v1/scores/${adminAreaId}`);
+  const { score } = await apiFetch<Results>(
+    context,
+    `v1/scores/${adminAreaId}`,
+  );
+  const image = await getImage(score.name);
+
+  return { image, score };
 }
 
 export default function ScorePage() {
-  const { score } = useLoaderData<Results>();
+  const { score, image } = useLoaderData<Results & { image: WikimediaImage }>();
   const t = useT();
 
+  const artist = DOMPurify.sanitize(image?.artist, {
+    FORBID_TAGS: ["b", "small", "i", "u", "em", "strong"],
+  });
+
   return (
-    <div className="space-y-12 py-12">
-      <div className="flex items-center gap-4">
-        <Button asChild variant="ghost" size="icon">
-          <Link to="/" aria-label={t("Go back")}>
-            <ArrowLeft aria-hidden />
-          </Link>
-        </Button>
-        <h2 className="text-2xl md:text-4xl font-medium">
-          <T _str="a11y-Score for {region}" region={score.name} />
-        </h2>
-      </div>
-      <Alert>
-        <AlertTitle className="flex gap-2 items-center">
-          <TriangleAlert size={16} />
-          <T _str="Beta Warning!" />
-        </AlertTitle>
-        <AlertDescription>
-          <T _str="This application is in early beta and still in heavy development. The current scores may be incomplete and inaccurate." />
-        </AlertDescription>
-      </Alert>
-      <div>
-        <h3 className="font-medium text-xl md:text-2xl mb-6">
-          <T _str="Overview" />
-        </h3>
-        <div className="text-sm md:text-md mb-2 flex justify-between">
-          <span>
-            <T _str="Overall score" />
-          </span>
-          <span>
+    <div>
+      <div
+        className="aspect-[16/6] bg-cover bg-center bg-linear-to-br from-indigo-300 to-gray-500 relative"
+        style={
+          image?.url ? { backgroundImage: `url(${image.url}?width=1920)` } : {}
+        }
+      >
+        {image && artist && (
+          <span className="bg-white/60 text-gray-900 px-0.5 text-[10px] absolute top-1 right-1">
             <T
-              _str="{points} of {totalPoints} Points"
-              points={score.score}
-              totalPoints={100}
+              _str="&copy; by {artist} ({license})"
+              artist={
+                <span
+                  className="underline"
+                  // biome-ignore lint/security/noDangerouslySetInnerHtml: it's sanitized above with dompurify
+                  dangerouslySetInnerHTML={{ __html: artist }}
+                />
+              }
+              license={image.license}
             />
           </span>
+        )}
+      </div>
+      <Main>
+        <div className="space-y-12 pb-24">
+          <div className="bg-white pb-6 pt-8 px-8 shadow-md transform -mt-32 relative rounded-xl grid grid-cols-[1fr_min-content] gap-4">
+            <div className="flex flex-col gap-4 justify-between">
+              <h2 className="text-2xl md:text-5xl font-medium">{score.name}</h2>
+              <p className="flex flex-col gap-2">
+                <span>
+                  <T
+                    _str="{lastUpdated}: {time}"
+                    time={score.createdAt}
+                    lastUpdated={
+                      <span className="font-medium">
+                        <T _str="Last updated" />
+                      </span>
+                    }
+                  />
+                </span>
+                {/*<NavLink*/}
+                {/*  to="/faqs/how-is-it-calculated"*/}
+                {/*  className="hover:text-primary hover:underline inline-flex gap-2 items-center"*/}
+                {/*>*/}
+                {/*  <T _str="Learn more on how we calculate scores" />*/}
+                {/*  <ArrowRight size={18} />*/}
+                {/*</NavLink>*/}
+              </p>
+            </div>
+            <div className="">
+              <Meter percentage={0.42}>
+                <div className="whitespace-nowrap inline-flex gap-2 leading-tight items-center text-sm">
+                  <T
+                    _str="{score} of 100{br}points"
+                    br={<br />}
+                    score={
+                      <span className="font-bold text-6xl">
+                        {score.score || 42}
+                      </span>
+                    }
+                  />
+                </div>
+                <div className="flex uppercase gap-2 font-medium text-lg items-center leading-tight text-amber-700">
+                  <Meh size={18} />
+                  <T _str="Okay" />
+                </div>
+              </Meter>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {score.toplevelCategories.map((toplevelCategory) => (
+              <ScoreCard
+                key={toplevelCategory.name}
+                toplevelCategory={toplevelCategory}
+              />
+            ))}
+          </div>
         </div>
-        <Progress value={score.score} max={100} />
-      </div>
-      <div className="grid md:grid-cols-2 gap-4">
-        {score.toplevelCategories.map((toplevelCategory) => (
-          <ScoreCard
-            key={toplevelCategory.name}
-            toplevelCategory={toplevelCategory}
-          />
-        ))}
-      </div>
+      </Main>
     </div>
   );
 }
