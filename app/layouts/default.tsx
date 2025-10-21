@@ -19,13 +19,7 @@ export default function Layout() {
           </h1>
         </NavLink>
       </header>
-      <main className="grid items-center px-4 md:px-10">
-        <div className="w-full overflow-x-hidden">
-          <div className="md:max-w-[800px] mx-auto">
-            <Outlet />
-          </div>
-        </div>
-      </main>
+      <Outlet />
       <footer className=" bg-gray-100 px-4 md:px-10 py-6 flex flex-col md:flex-row md:items-end gap-8 justify-between text-sm">
         <nav className="order-2 md:order-1">
           <ul className="flex gap-6">
