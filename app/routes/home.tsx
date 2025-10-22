@@ -15,11 +15,20 @@ import {
 import { T, useT } from "@transifex/react";
 import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useNavigation } from "react-router";
+import { useLoaderData, useNavigate, useNavigation } from "react-router";
 import { z } from "zod";
 import FaqLinks from "~/components/FaqLinks";
 import Main from "~/components/Main";
-import { allowedAdminAreas } from "~/config";
+import { apiFetch } from "~/utils/api";
+import type { Route } from "./+types/home";
+
+type AdminAreasResult = {
+  adminAreas: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+};
 
 export function meta() {
   return [
@@ -32,7 +41,12 @@ export function meta() {
   ];
 }
 
+export async function loader({ context }: Route.LoaderArgs) {
+  return await apiFetch<AdminAreasResult>(context, `v1/admin-areas`);
+}
+
 export default function Home() {
+  const { adminAreas } = useLoaderData<AdminAreasResult>();
   const t = useT();
 
   const navigate = useNavigate();
@@ -41,7 +55,7 @@ export default function Home() {
 
   const formSchema = z.object({
     region: z.enum(
-      Object.values(allowedAdminAreas).map(({ id }) => String(id)),
+      Object.values(adminAreas).map(({ slug }) => String(slug)),
       t("Please select a valid region"),
     ),
   });
@@ -57,11 +71,11 @@ export default function Home() {
     if (isNavigating) {
       return;
     }
-    navigate(`/score/${values.region.trim()}`);
+    navigate(`/scores/${values.region.trim()}`);
   }
 
   return (
-    <Main>
+    <Main className="bg-white">
       <div className="space-y-12 py-12">
         <h2 className="text-4xl md:text-5xl leading-normal font-bold">
           <T _str="Compare your region" />
@@ -90,8 +104,8 @@ export default function Home() {
                         <SelectValue placeholder={t("Select a region")} />
                       </SelectTrigger>
                       <SelectContent>
-                        {allowedAdminAreas.map(({ id, name }) => (
-                          <SelectItem key={id} value={String(id)}>
+                        {adminAreas.map(({ slug, name }) => (
+                          <SelectItem key={slug} value={slug}>
                             {name}
                           </SelectItem>
                         ))}
@@ -102,6 +116,7 @@ export default function Home() {
                 </FormItem>
               )}
             />
+
             <Button type="submit" disabled={isNavigating}>
               <T _str="Calculate a11y-Score" />
               {isNavigating && (

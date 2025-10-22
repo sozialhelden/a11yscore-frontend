@@ -15,40 +15,37 @@ import scoreEn from "../../content/en/faqs/score.md?raw";
 import whatEn from "../../content/en/faqs/what.md?raw";
 import legalEn from "../../content/en/pages/legal.md?raw";
 
-export type MarkdownDocument =
-  | "faqs/calculation"
-  | "faqs/contribute"
-  | "faqs/data"
-  | "faqs/feedback"
-  | "faqs/score"
-  | "faqs/what"
+export type ContentId =
+  | "faqs/how-is-it-calculated"
+  | "faqs/how-to-contribute"
+  | "faqs/what-data-is-being-used"
+  | "faqs/give-feedback"
+  | "faqs/how-to-interpret-the-score"
+  | "faqs/what-is-a11y-score"
   | "pages/legal";
 
-const content: Record<
-  MarkdownDocument,
-  Partial<Record<LanguageTag, string>>
-> = {
-  "faqs/calculation": {
+const content: Record<ContentId, Partial<Record<LanguageTag, string>>> = {
+  "faqs/how-is-it-calculated": {
     en: calculationEn,
     de: calculationDe,
   },
-  "faqs/contribute": {
+  "faqs/how-to-contribute": {
     en: contributeEn,
     de: contributeDe,
   },
-  "faqs/data": {
+  "faqs/what-data-is-being-used": {
     en: dataEn,
     de: dataDe,
   },
-  "faqs/feedback": {
+  "faqs/give-feedback": {
     en: feedbackEn,
     de: feedbackDe,
   },
-  "faqs/score": {
+  "faqs/how-to-interpret-the-score": {
     en: scoreEn,
     de: scoreDe,
   },
-  "faqs/what": {
+  "faqs/what-is-a11y-score": {
     en: whatEn,
     de: whatDe,
   },
@@ -58,8 +55,13 @@ const content: Record<
   },
 };
 
-export function loadMarkdownDocument(
-  identifier: MarkdownDocument,
+export function hasContent(id: string) {
+  console.log(id);
+  return Object.keys(content).includes(id);
+}
+
+export function loadContent(
+  identifier: ContentId,
   languageTag: LanguageTag,
 ): Promise<string> | string {
   if (!content[identifier]) {
