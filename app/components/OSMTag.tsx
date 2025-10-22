@@ -1,3 +1,7 @@
+import { VisuallyHidden } from "@sozialhelden/ui";
+import { T } from "@transifex/react";
+import { ExternalLink } from "lucide-react";
+
 export default function OSMTag({
   tag: { key, value },
   isLink = true,
@@ -15,9 +19,12 @@ export default function OSMTag({
     <a
       href={`https://wiki.openstreetmap.org/wiki/Key:${tag}`}
       target="_blank"
-      className={`text-blue-600 hover:underline ${defaultClasses}`}
+      className={`text-blue-600 hover:underline inline-flex items-center gap-1.5 ${defaultClasses}`}
     >
-      {key}={value}
+      {key}={value} <ExternalLink size={15} aria-hidden />{" "}
+      <VisuallyHidden>
+        <T _str="(Opens in a new tab)" />
+      </VisuallyHidden>
     </a>
   ) : (
     <span className={defaultClasses}>

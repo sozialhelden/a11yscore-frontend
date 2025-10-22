@@ -1,17 +1,19 @@
 import { type ReactNode, useId } from "react";
+import { getScorePercentage } from "~/utils/score";
 
 export type MeterSize = "lg";
 
-export default function Meter({
-  percentage,
+export default function ScoreMeter({
+  score,
   size = "lg",
   children,
 }: {
-  percentage: number;
+  score: number;
   size?: MeterSize;
   children: ReactNode;
 }) {
   const id = useId();
+  const percentage = getScorePercentage(score);
 
   // this is the radius of a circle filling the whole svg
   const radius = 200;
@@ -50,7 +52,6 @@ export default function Meter({
         <defs>
           <mask id={id}>
             <circle
-              className="circle-chart__circle"
               stroke="white"
               stroke-width={circleStroke * 6}
               // these values are not 50/50 because the circle is actually not a full circle
