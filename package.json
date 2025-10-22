@@ -37,7 +37,7 @@
     "@transifex/cli": "7.1.4",
     "@types/node": "22.18.12",
     "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1",
+    "@types/react-dom": "19.2.2",
     "env-cmd": "11.0.0",
     "husky": "9.1.7",
     "tailwindcss": "4.1.14",
