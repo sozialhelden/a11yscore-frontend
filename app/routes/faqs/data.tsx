@@ -9,13 +9,14 @@ import {
 } from "@sozialhelden/ui";
 import { T } from "@transifex/react";
 import { useLoaderData } from "react-router";
+import CategoryIcon from "~/components/category/CategoryIcon";
 import OSMTag from "~/components/OSMTag";
 import { i18nContext } from "~/context";
 import { apiFetch } from "~/utils/api";
-import { loadMarkdownDocument } from "~/utils/content";
+import { loadContent } from "~/utils/content";
 import type { Route } from "./+types/data";
 
-// TODO: add spec first workflow and generate types by the openapi spec
+// TODO: generate types by the openapi spec
 export type OsmTag = {
   key: string;
   value: string;
@@ -44,25 +45,27 @@ export type OsmTagsUsed = {
 export async function loader({ context }: Route.LoaderArgs) {
   const { languageTag } = context.get(i18nContext);
 
-  return {
-    content: await loadMarkdownDocument(
-      "faqs/data",
-      languageTag as LanguageTag,
-    ),
-    data: await apiFetch<OsmTagsUsed>(context, "v1/osm-tags"),
-  };
+  const data = await apiFetch<OsmTagsUsed>(context, "v1/osm-tags");
+  const content = loadContent(
+    "faqs/what-data-is-being-used",
+    languageTag as LanguageTag,
+  );
+
+  return { data, content };
 }
 
 export default function FaqData() {
-  const { content, data } = useLoaderData<{
-    content: string;
+  const { data, content } = useLoaderData<{
     data: OsmTagsUsed;
+    content: string;
   }>();
 
   return (
     <article className="prose max-w-none">
-      <div // biome-ignore lint/security/noDangerouslySetInnerHtml: this is a markdown file we control
+      <div
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: we control this
         dangerouslySetInnerHTML={{ __html: content }}
+        className="[&_h2]:first:mt-0"
       />
 
       <h2>
@@ -87,8 +90,17 @@ export default function FaqData() {
           {data.topLevelCategories.map((category) => {
             return category.subCategories.map((subCategory, index) => (
               <TableRow key={subCategory.id}>
-                <TableCell className="align-top py-3 font-bold">
-                  {index === 0 ? category.name : ""}
+                <TableCell className="align-top py-3">
+                  {index === 0 && (
+                    <span className="inline-flex items-center gap-2 underline font-medium">
+                      <CategoryIcon
+                        category={category.id}
+                        aria-hidden
+                        size={20}
+                      />
+                      <span>{category.name}</span>
+                    </span>
+                  )}
                 </TableCell>
                 <TableCell className="align-top py-3 font-medium">
                   {subCategory.name}

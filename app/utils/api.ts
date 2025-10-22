@@ -11,6 +11,7 @@ export function getApiUrl(
   const url = new URL(
     `${baseUrl || process.env.API_BASE_URL}/a11yscore/${path}`,
   );
+
   url.searchParams.append("lang", languageTag!);
 
   return url.toString();

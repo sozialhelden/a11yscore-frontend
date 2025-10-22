@@ -7,8 +7,8 @@ export default function Layout() {
   const t = useT();
 
   return (
-    <div className="min-h-screen grid grid-cols-1 grid-rows-[auto_1fr_auto]">
-      <header className="border-b border-gray-200 px-4 md:px-10 flex items-center h-[80px]">
+    <div className="min-h-screen grid grid-cols-1 grid-rows-[auto_1fr_auto] bg-gray-100">
+      <header className="border-b border-gray-200 px-4 md:px-10 flex items-center h-[80px] bg-white">
         <NavLink to="/" className="hover:text-primary">
           <h1 className="text-xl font-bold flex gap-4 items-center relative">
             <Star />
@@ -20,11 +20,11 @@ export default function Layout() {
         </NavLink>
       </header>
       <Outlet />
-      <footer className=" bg-gray-100 px-4 md:px-10 py-6 flex flex-col md:flex-row md:items-end gap-8 justify-between text-sm">
+      <footer className=" bg-gray-200 px-4 md:px-10 py-6 flex flex-col md:flex-row md:items-end gap-8 justify-between text-sm">
         <nav className="order-2 md:order-1">
           <ul className="flex gap-6">
             <li>
-              <FooterLink to="/legal">
+              <FooterLink to="/pages/legal">
                 <T _str="Legal notice" />
               </FooterLink>
             </li>
@@ -35,7 +35,7 @@ export default function Layout() {
             </li>
           </ul>
         </nav>
-        <div className="flex gap-12 text-gray-500 order-1 md:order-2">
+        <div className="flex gap-12 text-gray-800 order-1 md:order-2">
           <a
             className="flex flex-col gap-2 py-2 px-3 hover:text-primary hover:bg-primary/10 rounded"
             href="https://www.sozialhelden.de/"
