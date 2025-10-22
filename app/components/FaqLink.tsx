@@ -19,7 +19,7 @@ export default function FaqLink({
         `${defaultClassNames}${isActive ? " text-primary bg-primary/10" : ""}`
       }
     >
-      <ArrowRight size={16} aria-hidden />
+      <ArrowRight size={16} aria-hidden className="shrink-0" />
       {children}
     </NavLink>
   );
