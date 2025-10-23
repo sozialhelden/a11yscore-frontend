@@ -53,9 +53,9 @@ export default function ScoreMeter({
           <mask id={id}>
             <circle
               stroke="white"
-              stroke-width={circleStroke * 6}
+              strokeWidth={circleStroke * 6}
               // these values are not 50/50 because the circle is actually not a full circle
-              stroke-dasharray={`${circleCircumference * 0.46 * percentage + 0.52 * circleCircumference},${circleCircumference}`}
+              strokeDasharray={`${circleCircumference * 0.46 * percentage + 0.52 * circleCircumference},${circleCircumference}`}
               fill="none"
               cx={radius}
               cy={radius}
@@ -67,41 +67,41 @@ export default function ScoreMeter({
           <path
             d="M29.5151 167.201C29.5151 167.201 40.7138 110.098 85.793 68.5912C87.8959 66.6549 90.0726 64.7526 92.3253 62.8916"
             className="stroke-red-200"
-            stroke-width={circleStroke}
-            stroke-linecap="round"
+            strokeWidth={circleStroke}
+            strokeLinecap="round"
           />
           <path
             d="M117.001 46.0674C122.384 43.2516 128.079 40.6741 134.104 38.3864C152.752 31.3049 174.554 27 200 27C225.446 27 247.248 31.3049 265.896 38.3864C271.921 40.6741 277.616 43.2516 282.999 46.0674"
             className="stroke-amber-200"
-            stroke-width={circleStroke}
-            stroke-linecap="round"
+            strokeWidth={circleStroke}
+            strokeLinecap="round"
           />
 
           <path
             d="M370.484 167.201C370.484 167.201 359.286 110.098 314.207 68.5912C312.104 66.6549 309.927 64.7526 307.674 62.8916"
             className="stroke-lime-200"
-            stroke-width={circleStroke}
-            stroke-linecap="round"
+            strokeWidth={circleStroke}
+            strokeLinecap="round"
           />
         </g>
         <g mask={`url(#${id})`}>
           <path
             d="M29.5151 167.201C29.5151 167.201 40.7138 110.098 85.793 68.5912C87.8959 66.6549 90.0726 64.7526 92.3253 62.8916"
             className="stroke-red-400"
-            stroke-width={circleStroke}
-            stroke-linecap="round"
+            strokeWidth={circleStroke}
+            strokeLinecap="round"
           />
           <path
             d="M117.001 46.0674C122.384 43.2516 128.079 40.6741 134.104 38.3864C152.752 31.3049 174.554 27 200 27C225.446 27 247.248 31.3049 265.896 38.3864C271.921 40.6741 277.616 43.2516 282.999 46.0674"
             className="stroke-amber-400"
-            stroke-width={circleStroke}
-            stroke-linecap="round"
+            strokeWidth={circleStroke}
+            strokeLinecap="round"
           />
           <path
             d="M370.484 167.201C370.484 167.201 359.286 110.098 314.207 68.5912C312.104 66.6549 309.927 64.7526 307.674 62.8916"
             className="stroke-lime-400"
-            stroke-width={circleStroke}
-            stroke-linecap="round"
+            strokeWidth={circleStroke}
+            strokeLinecap="round"
           />
         </g>
         <line
@@ -109,8 +109,8 @@ export default function ScoreMeter({
           y1={radius + (radius - borderOffset + circleStroke) * Math.sin(angle)}
           x2={radius - lineStroke / 2}
           y2={radius}
-          stroke-width={lineStroke}
-          stroke-linecap="round"
+          strokeWidth={lineStroke}
+          strokeLinecap="round"
           strokeDasharray={`${circleStroke * 1.8},${radius}`}
           className="stroke-gray-900"
         />

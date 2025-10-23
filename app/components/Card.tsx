@@ -8,7 +8,7 @@ export default function Card({
   return (
     <div
       {...props}
-      className={`bg-white shadow-md px-3 py-3 rounded-md border-2 border-transparent ${className || ""}`}
+      className={`bg-white shadow-md px-3 py-3 rounded outline-2 outline-transparent ${className || ""}`}
     >
       {children}
     </div>
