@@ -22,7 +22,7 @@ export default function ScoreBox({
       {...props}
       className={`justify-center inline-flex gap-1 items-center py-0.5 px-1.5 leading-none rounded font-medium text-md ${getScoreColors(score).both} ${className || ""}`}
     >
-      <span className="min-w-5 text-center">
+      <span className="min-w-7 text-center">
         {score === null && <span>-</span>}
         {score}
       </span>
