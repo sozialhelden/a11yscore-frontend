@@ -15,6 +15,18 @@ export default [
       route(
         "/scores/:adminArea/:topLevelCategory",
         "./routes/scores/top-level-category.tsx",
+        [
+          route(
+            "/scores/:adminArea/:topLevelCategory/:subCategory",
+            "./routes/scores/empty-state.tsx",
+            [
+              route(
+                "/scores/:adminArea/:topLevelCategory/:subCategory/:criterion",
+                "./routes/scores/empty-state.tsx",
+              ),
+            ],
+          ),
+        ],
       ),
     ]),
 

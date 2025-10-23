@@ -22,3 +22,8 @@
 
 /* Add plugins */
 @plugin "@tailwindcss/typography";
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
