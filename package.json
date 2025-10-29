@@ -20,7 +20,7 @@
   "dependencies": {
     "@react-router/node": "7.9.4",
     "@react-router/serve": "7.9.4",
-    "@sozialhelden/core": "2.2.3",
+    "@sozialhelden/core": "2.3.0",
     "@sozialhelden/ui": "1.8.0",
     "@transifex/native": "7.1.4",
     "@transifex/react": "7.1.4",
