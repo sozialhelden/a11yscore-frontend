@@ -14,11 +14,11 @@ export default function Main({
 
   return (
     <main
-      className={`grid items-center px-4 md:px-10 ${className || ""}`}
+      className={`grid grid-cols-1 items-center ${className || ""}`}
       {...props}
     >
-      <div className="w-full overflow-x-hidden md:overflow-x-clip">
-        <div className={`mx-auto ${sizeClasses[size]}`}>{children}</div>
+      <div className={`mx-auto w-full px-4 md:px-10 ${sizeClasses[size]}`}>
+        {children}
       </div>
     </main>
   );

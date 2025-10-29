@@ -4,6 +4,7 @@ export type ScoreRating =
   | "okay"
   | "poor"
   | "unavailable";
+
 export type ScoreTrend = "up" | "stable" | "down";
 
 const maxPoints = 100;
@@ -13,10 +14,9 @@ export function getScorePercentage(score: number): number {
 }
 
 export function getScoreRating(score: number): ScoreRating {
-  if (score === null) {
+  if (score === null || score === 0) {
     return "unavailable";
   }
-
   if (score >= 80) {
     return "excellent";
   }
