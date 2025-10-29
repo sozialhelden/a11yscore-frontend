@@ -26,7 +26,7 @@ export default function SubCategory() {
   const { score, topLevelCategory } = useOutletContext<OutletContext>();
 
   const subCategory = topLevelCategory.subCategories.find(
-    ({ subCategory }) => subCategory === getSubCategoryId(),
+    ({ id }) => id === getSubCategoryId(),
   );
   const isActive = isSubCategoryActive();
 
@@ -36,7 +36,7 @@ export default function SubCategory() {
     subCategory && (
       <>
         <ScoreDetailColumnCard
-          icon={subCategory.subCategory}
+          icon={subCategory.id}
           name={subCategory.name}
           score={subCategory.score}
           description={subCategory.description}
@@ -94,19 +94,19 @@ export default function SubCategory() {
                       return (b.score || 0) - (a.score || 0);
                     })
                     .map((topic) => (
-                      <div key={topic.topic}>
+                      <div key={topic.id}>
                         <h4 className="font-medium">{topic.name}</h4>
                         <ul className="-mx-6">
                           {topic.criteria
                             .sort((a, b) => {
                               return (b.score || 0) - (a.score || 0);
                             })
-                            .map(({ criterion, name, score }) => (
-                              <li key={criterion}>
+                            .map((criterion) => (
+                              <li key={criterion.id}>
                                 <CriterionListItem
-                                  criterion={criterion}
-                                  score={score}
-                                  name={name}
+                                  id={criterion.id}
+                                  score={criterion.score}
+                                  name={criterion.name}
                                 />
                               </li>
                             ))}

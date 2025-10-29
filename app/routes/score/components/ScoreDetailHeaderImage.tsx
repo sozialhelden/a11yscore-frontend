@@ -10,10 +10,12 @@ export default function ScoreDetailHeaderImage({
 }) {
   const sanitizedArtist = useMemo(
     () =>
-      DOMPurify.sanitize(image.artist, {
-        FORBID_TAGS: ["b", "small", "i", "u", "em", "strong"],
-      }),
-    [image.artist],
+      image
+        ? DOMPurify.sanitize(image.artist, {
+            FORBID_TAGS: ["b", "small", "i", "u", "em", "strong"],
+          })
+        : undefined,
+    [image],
   );
 
   return (

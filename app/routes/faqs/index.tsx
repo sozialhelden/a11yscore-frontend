@@ -1,6 +1,5 @@
 import type { LanguageTag } from "@sozialhelden/core";
-import { Outlet, useLoaderData } from "react-router";
-import FaqLinks from "~/components/FaqLinks";
+import { useLoaderData } from "react-router";
 import { i18nContext } from "~/context";
 import { type ContentId, hasContent, loadContent } from "~/utils/content";
 import type { Route } from "./+types/index";
