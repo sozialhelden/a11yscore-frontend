@@ -16,10 +16,10 @@ export default function FaqLink({
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `${defaultClassNames}${isActive ? " bg-primary/10" : ""}`
+        `${defaultClassNames}${isActive ? " text-primary bg-primary/10" : ""}`
       }
     >
-      <ArrowRight size={16} aria-hidden />
+      <ArrowRight size={16} aria-hidden className="shrink-0" />
       {children}
     </NavLink>
   );

@@ -1,100 +1,83 @@
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Button,
-  Progress,
-} from "@sozialhelden/ui";
-import { T, useT } from "@transifex/react";
-import { ArrowLeft, TriangleAlert } from "lucide-react";
-import { Link, useLoaderData } from "react-router";
-import { ScoreCard } from "~/components/ScoreCard";
+import { useEffect, useMemo, useRef } from "react";
+import { Outlet, useLoaderData, useParams } from "react-router";
+import Main from "~/components/Main";
+import TopLevelCategoryListItem from "~/routes/score/components/list/TopLevelCategoryListItem";
+import ScoreDetailHeader from "~/routes/score/components/ScoreDetailHeader";
+import ScoreDetailHeaderImage from "~/routes/score/components/ScoreDetailHeaderImage";
+import ScoreDetailScrollArea, {
+  type ScoreDetailsScrollAreaRef,
+} from "~/routes/score/components/ScoreDetailScrollArea";
+import type { ScoreResults } from "~/routes/score/types/api";
 import { apiFetch } from "~/utils/api";
+import { getImage, type WikimediaImage } from "~/utils/wikidata";
 import type { Route } from "./+types/index";
 
-// TODO: add spec first workflow and generate types by the openapi spec
-export type ScoreResult = {
-  score: number;
-  name: string;
-};
-export type CriterionScoreResult = ScoreResult;
-export type TopicScoreResult = ScoreResult & {
-  criteria: CriterionScoreResult[];
-};
-export type SubCategoryScoreResult = ScoreResult & {
-  description?: string;
-  topics: TopicScoreResult[];
-};
-export type TopLevelCategoryScoreResult = ScoreResult & {
-  interpretation: string;
-  subCategories: SubCategoryScoreResult[];
-};
-export type Results = {
-  score: {
-    score: number;
-    name: string;
-    toplevelCategories: TopLevelCategoryScoreResult[];
-  };
-};
-
 export async function loader({
-  params: { adminAreaId },
+  params: { adminArea },
   context,
 }: Route.LoaderArgs) {
-  return await apiFetch<Results>(context, `v1/scores/${adminAreaId}`);
+  const { score } = await apiFetch<ScoreResults>(
+    context,
+    `v1/scores/${adminArea}`,
+  );
+  const image = await getImage(score.adminArea.name);
+  return { image, score };
 }
 
 export default function ScorePage() {
-  const { score } = useLoaderData<Results>();
-  const t = useT();
+  const { score, image } = useLoaderData<{
+    score: ScoreResults["score"];
+    image: WikimediaImage;
+  }>();
+
+  const { topLevelCategory, subCategory, criterion } = useParams();
+  const columnCount = useMemo(() => {
+    if (criterion) return 4;
+    if (subCategory) return 3;
+    return 2;
+  }, [subCategory, criterion]);
+
+  const scrollAreaRef = useRef<ScoreDetailsScrollAreaRef>(null);
+  useEffect(() => {
+    if (criterion) {
+      return scrollAreaRef.current?.scrollTo(3);
+    }
+    if (subCategory) {
+      return scrollAreaRef.current?.scrollTo(2);
+    }
+    if (topLevelCategory) {
+      scrollAreaRef.current?.scrollTo(1);
+    }
+  }, [subCategory, criterion, topLevelCategory]);
 
   return (
-    <div className="space-y-12 py-12">
-      <div className="flex items-center gap-4">
-        <Button asChild variant="ghost" size="icon">
-          <Link to="/" aria-label={t("Go back")}>
-            <ArrowLeft aria-hidden />
-          </Link>
-        </Button>
-        <h2 className="text-2xl md:text-4xl font-medium">
-          <T _str="a11y-Score for {region}" region={score.name} />
-        </h2>
-      </div>
-      <Alert>
-        <AlertTitle className="flex gap-2 items-center">
-          <TriangleAlert size={16} />
-          <T _str="Beta Warning!" />
-        </AlertTitle>
-        <AlertDescription>
-          <T _str="This application is in early beta and still in heavy development. The current scores may be incomplete and inaccurate." />
-        </AlertDescription>
-      </Alert>
-      <div>
-        <h3 className="font-medium text-xl md:text-2xl mb-6">
-          <T _str="Overview" />
-        </h3>
-        <div className="text-sm md:text-md mb-2 flex justify-between">
-          <span>
-            <T _str="Overall score" />
-          </span>
-          <span>
-            <T
-              _str="{points} of {totalPoints} Points"
-              points={score.score}
-              totalPoints={100}
-            />
-          </span>
-        </div>
-        <Progress value={score.score} max={100} />
-      </div>
-      <div className="grid md:grid-cols-2 gap-4">
-        {score.toplevelCategories.map((toplevelCategory) => (
-          <ScoreCard
-            key={toplevelCategory.name}
-            toplevelCategory={toplevelCategory}
+    <div>
+      <ScoreDetailHeaderImage image={image} />
+      <Main size="wide">
+        <div className="space-y-8 md:space-y-12 pb-24">
+          <ScoreDetailHeader
+            name={score.adminArea.name}
+            score={score.score}
+            lastUpdated={score.createdAt}
+            className="-mt-8 md:-mt-32"
           />
-        ))}
-      </div>
+          <ScoreDetailScrollArea columnCount={columnCount} ref={scrollAreaRef}>
+            <div className={`space-y-4`}>
+              {score.toplevelCategories
+                .sort((a, b) => {
+                  return (b.score || 0) - (a.score || 0);
+                })
+                .map((topLevelCategory) => (
+                  <TopLevelCategoryListItem
+                    key={topLevelCategory.id}
+                    topLevelCategory={topLevelCategory}
+                  />
+                ))}
+            </div>
+            <Outlet context={{ score }} />
+          </ScoreDetailScrollArea>
+        </div>
+      </Main>
     </div>
   );
 }
