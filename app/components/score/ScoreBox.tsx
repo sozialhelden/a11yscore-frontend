@@ -17,8 +17,17 @@ export default function ScoreBox({
       {...props}
       className={`justify-center inline-flex gap-1 items-center py-0.5 px-1.5 leading-none rounded font-medium text-md ${getScoreColors(score).both} ${className || ""}`}
     >
-      <span className="min-w-7 text-center">
-        {getScoreRating(score) === "unavailable" ? <span>-</span> : score}
+      <span className="min-w-7 text-center whitespace-nowrap">
+        {getScoreRating(score) === "unavailable" ? (
+          <span>-</span>
+        ) : (
+          <>
+            {score}&nbsp;
+            <span className="text-xs">
+              <T _str="Pts." />
+            </span>
+          </>
+        )}
       </span>
       {trend && (
         <Tooltip>

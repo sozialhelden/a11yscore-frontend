@@ -20,7 +20,7 @@ export async function loader({
     context,
     `v1/scores/${adminArea}`,
   );
-  const image = await getImage(score.name);
+  const image = await getImage(score.adminArea.name);
   return { image, score };
 }
 
@@ -56,7 +56,7 @@ export default function ScorePage() {
       <Main size="wide">
         <div className="space-y-8 md:space-y-12 pb-24">
           <ScoreDetailHeader
-            name={score.name}
+            name={score.adminArea.name}
             score={score.score}
             lastUpdated={score.createdAt}
             className="-mt-8 md:-mt-32"
@@ -69,7 +69,7 @@ export default function ScorePage() {
                 })
                 .map((topLevelCategory) => (
                   <TopLevelCategoryListItem
-                    key={topLevelCategory.topLevelCategory}
+                    key={topLevelCategory.id}
                     topLevelCategory={topLevelCategory}
                   />
                 ))}
