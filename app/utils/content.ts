@@ -56,7 +56,6 @@ const content: Record<ContentId, Partial<Record<LanguageTag, string>>> = {
 };
 
 export function hasContent(id: string) {
-  console.log(id);
   return Object.keys(content).includes(id);
 }
 

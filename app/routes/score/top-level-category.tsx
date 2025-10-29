@@ -9,7 +9,7 @@ export default function TopLevelCategory() {
   const { score } = useOutletContext<ScoreResults>();
 
   const topLevelCategory = score.toplevelCategories.find(
-    ({ topLevelCategory }) => topLevelCategory === getTopLevelCategoryId(),
+    ({ id }) => id === getTopLevelCategoryId(),
   );
 
   const isActive = isTopLevelCategoryActive();
@@ -18,7 +18,7 @@ export default function TopLevelCategory() {
     topLevelCategory && (
       <>
         <ScoreDetailColumnCard
-          icon={topLevelCategory.topLevelCategory}
+          icon={topLevelCategory.id}
           name={topLevelCategory.name}
           score={topLevelCategory.score}
           isActive={isActive}
@@ -28,12 +28,12 @@ export default function TopLevelCategory() {
               .sort((a, b) => {
                 return (b.score || 0) - (a.score || 0);
               })
-              .map(({ subCategory, score, name }) => (
-                <li key={subCategory}>
+              .map((subCategory) => (
+                <li key={subCategory.id}>
                   <SubCategoryListItem
-                    subCategory={subCategory}
-                    name={name}
-                    score={score}
+                    id={subCategory.id}
+                    name={subCategory.name}
+                    score={subCategory.score}
                   />
                 </li>
               ))}

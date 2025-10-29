@@ -12,7 +12,7 @@ export default function OSMTag({
   };
   isLink?: boolean;
 }) {
-  const defaultClasses = "font-mono bg-gray-100 px-1 py-0.5 rounded";
+  const defaultClasses = "font-mono bg-gray-100 text-[.95em] px-1 rounded";
   const tag = value === "*" ? key : `${key}=${value}`;
 
   return isLink ? (

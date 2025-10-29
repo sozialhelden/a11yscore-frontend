@@ -1,4 +1,5 @@
 import { T, useT } from "@transifex/react";
+import { marked } from "marked";
 import { useCallback, useMemo } from "react";
 import { useOutletContext } from "react-router";
 import OSMTagList from "~/components/OSMTagList";
@@ -25,7 +26,7 @@ export default function TopLevelCategory() {
   const { subCategory } = useOutletContext<OutletContext>();
 
   const findCriterion = useCallback(
-    ({ criterion }: { criterion: string }) => criterion === getCriterionId(),
+    ({ id }: { id: string }) => id === getCriterionId(),
     [getCriterionId],
   );
 
@@ -45,7 +46,7 @@ export default function TopLevelCategory() {
   return (
     criterion && (
       <ScoreDetailColumnCard
-        icon={criterion.criterion}
+        icon={criterion.id}
         name={criterion.name}
         score={criterion.score}
         isActive={isActive}
@@ -90,20 +91,22 @@ export default function TopLevelCategory() {
           )}
           {getScoreRating(criterion.score) !== "unavailable" && (
             <>
-              <ExplanationItem headline={t("Why is this important?")}>
-                {criterion.reason || "-"}
-              </ExplanationItem>
+              <ExplanationItem
+                headline={t("Why is this important?")}
+                text={criterion.reason}
+              />
               <ExplanationItem
                 headline={t("How can I make this more accessible?")}
-                links={[
-                  {
-                    to: "/faqs/how-to-contribute",
-                    label: t("Learn more about how to contribute"),
-                  },
-                ]}
-              >
-                Lorem Ipsum dolor sit amet
-              </ExplanationItem>
+                text={criterion.recommendations
+                  .map((text) =>
+                    criterion.recommendations.length > 1 ? `* ${text}` : text,
+                  )
+                  .join("\n\n")}
+                links={criterion.links.map(({ url, label }) => ({
+                  to: url,
+                  label,
+                }))}
+              />
             </>
           )}
         </div>

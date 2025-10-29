@@ -12,35 +12,10 @@ import { useLoaderData } from "react-router";
 import CategoryIcon from "~/components/Icon";
 import OSMTag from "~/components/OSMTag";
 import { i18nContext } from "~/context";
+import type { OsmTagsUsed } from "~/routes/faqs/types/api";
 import { apiFetch } from "~/utils/api";
 import { loadContent } from "~/utils/content";
 import type { Route } from "./+types/data";
-
-// TODO: generate types by the openapi spec
-export type OsmTag = {
-  key: string;
-  value: string;
-};
-export type CriterionOsmTagsUsed = {
-  id: string;
-  name: string;
-  osmTags: OsmTag[];
-};
-export type SubCategoryOsmTagsUsed = {
-  id: string;
-  name: string;
-  description: string;
-  osmTags: OsmTag[];
-};
-export type TopLevelCategoryOsmTagsUsed = {
-  id: string;
-  name: string;
-  subCategories: SubCategoryOsmTagsUsed[];
-};
-export type OsmTagsUsed = {
-  topLevelCategories: TopLevelCategoryOsmTagsUsed[];
-  criteria: CriterionOsmTagsUsed[];
-};
 
 export async function loader({ context }: Route.LoaderArgs) {
   const { languageTag } = context.get(i18nContext);
