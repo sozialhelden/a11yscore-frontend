@@ -1,8 +1,5 @@
 import type { LanguageTag } from "@sozialhelden/core";
-import { Button } from "@sozialhelden/ui";
-import { T } from "@transifex/react";
-import { ArrowLeft } from "lucide-react";
-import { NavLink, Outlet, useLoaderData } from "react-router";
+import { useLoaderData } from "react-router";
 import Main from "~/components/Main";
 import { i18nContext } from "~/context";
 import { type ContentId, hasContent, loadContent } from "~/utils/content";

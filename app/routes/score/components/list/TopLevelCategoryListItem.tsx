@@ -7,7 +7,7 @@ import { useScoreRoutes } from "~/routes/score/hooks/useScoreRoutes";
 import type { TopLevelCategoryScoreResult } from "~/routes/score/types/api";
 
 export default function TopLevelCategoryListItem({
-  topLevelCategory: { topLevelCategory, name, score, interpretation },
+  topLevelCategory: { id, name, score, interpretation },
   className,
   ...props
 }: ComponentProps<"div"> & {
@@ -16,8 +16,8 @@ export default function TopLevelCategoryListItem({
   const { isChildOfTopLevelCategoryActive, getTopLevelCategoryUrl } =
     useScoreRoutes();
 
-  const url = getTopLevelCategoryUrl(topLevelCategory);
-  const isActive = isChildOfTopLevelCategoryActive(topLevelCategory);
+  const url = getTopLevelCategoryUrl(id);
+  const isActive = isChildOfTopLevelCategoryActive(id);
 
   return (
     <Card
@@ -31,7 +31,7 @@ export default function TopLevelCategoryListItem({
           preventScrollReset={true}
         >
           <h4 className="leading-none flex gap-3 items-center text-lg">
-            <CategoryIcon id={topLevelCategory} aria-hidden size={24} />
+            <CategoryIcon id={id} aria-hidden size={24} />
             {name}
           </h4>
         </NavLink>
