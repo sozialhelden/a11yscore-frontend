@@ -1,12 +1,14 @@
 ## What is a11y-Score?
 
-The built infrastructure in our cities and rural areas is often full of obstacles for millions of people with disabilities. This severely restricts their everyday mobility and, in some cases, their quality of life. A major problem that stands in the way of smart decisions for improvements is the frequent lack of a comprehensive overview and comparable data on actual accessibility.
+Whether in the city or in the countryside, buildings and paths are often full of obstacles for millions of people. This severely restricts their everyday mobility and quality of life.
+
+A major problem that stands in the way of smart decisions for improvements is the frequent lack of a comprehensive overview and comparable data on actual accessibility.
 
 ### A new indicator for accessibility
 
 The a11y-Score project aims to make the accessibility of the physical world measurable and comparable. It is more than just a data evaluation. Our goal is to create, for the first time, a reliable indicator that makes regions worldwide comparable in terms of their accessibility.
 
-This project is funded by the Federal Ministry of Transport (BMV) as part of the mFUND initiative. This underscores the nationwide relevance and strategic value of our approach to driving digital transformation in the field of mobility and improving participation.
+This project is funded by the Federal Ministry of Transport (BMV) as part of the [mFUND initiative](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html). This underscores the nationwide relevance and strategic value of our approach to driving digital transformation in the field of mobility and improving participation.
 
 _(If you're wondering what “a11y” means, it's short for “accessibility.” The “11” serves as a placeholder for eleven letters between the “a” and the ‘y’ – a little “nerd fact” from the tech world.)_
 

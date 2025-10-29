@@ -4,9 +4,11 @@
 
 Sie arbeiten in einer Behörde, einem Unternehmen oder einer Organisation, die relevante Daten besitzt? [Kontaktieren Sie uns](/faqs/give-feedback), um zu besprechen, wie diese Daten in den a11y-Score einfließen können.
 
+Lesen Sie sich auch [diesen Leitfaden durch, der beschreibt, wie Sie OpenStreetMap-Daten in Ihre Prozesse integrieren können](http://web.archive.org/web/20240527121153/https://www.bav.admin.ch/dam/bav/fr/dokumente/themen/mmm/leitfaden-openstreetmap.pdf.download.pdf/Daten%20in%20OpenStreetMap%20integrieren%20%E2%80%93%20ein%20Leitfaden%20f%C3%BCr%20Dateninhaber.pdf).
+
 ### Daten erheben
 
-Der a11y-Score benutzt Daten der [Open Street Map (OSM)](https://www.openstreetmap.org/) um die Barrierefreiheit zu bewerten. Sie können helfen, indem Sie Orte in Ihrer Umgebung kartieren und/oder Informationen über deren Barrierefreiheit hinzufügen.
+Der a11y-Score benutzt Daten der [OpenStreetMap (OSM)](https://www.openstreetmap.org/) um die Barrierefreiheit zu bewerten. Sie können helfen, indem Sie Orte in Ihrer Umgebung kartieren und/oder Informationen über deren Barrierefreiheit hinzufügen.
 
 * [Hier finden Sie mehr Informationen zur Berechnungsmethode](/faqs/how-is-it-calculated)
 * [Hier erfahren Sie, wie Sie zu Open Street Map beitragen können](https://learnosm.org/de/beginner/)
@@ -22,4 +24,11 @@ Sie kennen sich mit Geo-Daten und/oder Software-Entwicklung aus? [Schauen Sie si
 
 ### Anderen davon erzählen
 
-Veränderung erfordert kollektive Anstrengungen. Erzählen Sie Freund\*innen, Familie und Kolleg\*innen vom a11y-Score und ermutigen Sie sie, ebenfalls mitzumachen. Nur gemeinsam können wir eine wirklich inklusive Welt schaffen.
+Veränderung erfordert kollektive Anstrengungen:
+
+- Erzählen Sie Freund\*innen, Familie und Kolleg\*innen vom a11y-Score.
+- Ermutigen Sie ihr Umfeld, ebenfalls mitzumachen: Tragen Sie zum Beispiel gemeinsam auf [Wheelmap.org](https://wheelmap.org) rollstuhlgerechte Orte ein.
+- Machen Sie Ihre Stadt oder lokale Verkehrsbehörde [auf unsere Arbeit aufmerksam](https://www.sozialhelden.de/topics/digitalisierung).
+- Falls Sie diesen Text auf GitHub lesen, geben Sie dem GItHub-Projekt einen Stern.
+
+Gemeinsam können wir eine wirklich inklusive Welt schaffen und im großem Stil Barrieren abbauen.

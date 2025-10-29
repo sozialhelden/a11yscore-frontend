@@ -1,6 +1,6 @@
 ## Wie wird der a11y-Score berechnet?
 
-Der a11y-Score wird mit offenen Daten basierend auf der [Open Street Map (OSM)](https://www.openstreetmap.org/) berechnet. OSM ist eine kollaborative Karte der Welt, die von Freiwilligen erstellt und gepflegt wird.
+Der a11y-Score wird mit offenen Daten basierend auf der [OpenStreetMap (OSM)](https://www.openstreetmap.org/) berechnet. OSM ist eine kollaborative Karte der Welt, die von Freiwilligen erstellt und gepflegt wird.
 
 ### Kategorisierung der physischen Welt
 
@@ -8,19 +8,19 @@ Um die Barrierefreiheit der physischen Welt bewerten zu können, wird diese in v
 
 ### Kriterien der Barrierefreiheit
 
-Für jede Unterkategorie, z.B. "Bahnhof" wird jetzt eine Liste an Kriterien festgelegt. Falls alle Kriterien erfüllt sind, gilt dieser Ort für den a11y-Score als barrierefrei. Für Bahnhöfe könnten das z.B. sein, dass sie rollstuhlgerecht sind - also jeder Bereich über Rampen oder Aufzüge zugänglich ist - oder dass sie ein taktiles Leitsystem haben.
+Für jede Unterkategorie, z.B. "Bahnhof", legen wir eine Liste an Kriterien fest. Ein Ort erfüllt alle Kriterien? Dann gilt er für den a11y-Score als barrierefrei. Für Bahnhöfe beziehen wir zum Beispiel die Rollstuhlgerechtigkeit ein – also dass jeder Bereich im Bauwerk ebenerdig zugänglich ist. Genauso werden Boden-Leitsysteme zum Tasten, Echtzeit-Abfahrtstafeln und akustische Durchsagen neben vielen anderen Kriterien einbezogen.
 
 ### Gewichtung der Kriterien
 
-Diese Kriterien werden dann gewichtet, um ihre Wichtigkeit für die Barrierefreiheit zu reflektieren. Zum Beispiel könnte die Rollstuhlgerechtigkeit eines Bahnhofs höher gewichtet werden als das Vorhandensein einer Toilette mit Haltegriffen.
+Da die Kriterien einen unterschiedlich starken Einfluss auf die tatsächliche Barrierefreiheit haben, werden sie gewichtet. Zum Beispiel könnte die Rollstuhlgerechtigkeit eines Bahnhofs anders gewichtet werden als das Vorhandensein von beidseitigen Haltegriffen an einer Toilette.
 
 ### Datenqualität
 
-Die Qualität der Daten in OSM kann variieren, da sie von Freiwilligen gepflegt werden. Daher wird die Datenqualität ebenfalls in die Berechnung des a11y-Scores einbezogen. Kriterien bei denen die Datenlage unklar oder unvollständig ist, werden entsprechend niedriger gewichtet.
+Die Daten-Vollständigkeit in OSM kann örtlich variieren, da die Karte von Freiwilligen gepflegt wird. Daher bezieht der a11y-Score die Datenqualität mit ein. Kriterien mit unvollständiger Datenlage werden – wenn möglich – entsprechend niedriger gewichtet.
 
 ### Berechnung des a11y-Scores
 
-Anhand der gewichteten Kriterien und der Datenqualität wird dann für jede Kategorie ein a11y-Score berechnet. Diese Scores werden dann wiederum gewichtet aggregiert um einen Gesamtscore für eine bestimmte Region zu erhalten.
+Anhand der gewichteten Kriterien und der Datenqualität berechnet das System letztendlich für jede Kategorie einen a11y-Score. Diese Kategorie-Scores werden erneut gewichtet und dann gemittelt, um einen Gesamt-Score für eine Region zu erhalten.
 
 ### Weiterführende Informationen
 

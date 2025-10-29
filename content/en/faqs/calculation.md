@@ -1,6 +1,6 @@
 ## How is it calculated?
 
-The a11y-Score is calculated using open data based on [Open Street Map (OSM)](https://www.openstreetmap.org/). OSM is a collaborative map of the world created and maintained by volunteers.
+The a11y score is calculated using open data based on [OpenStreetMap (OSM)](https://www.openstreetmap.org/). OSM is a collaborative map of the world created and maintained by volunteers.
 
 ### Categorization of the physical world
 
@@ -8,19 +8,19 @@ In order to evaluate the accessibility of the physical world, it is divided into
 
 ### Accessibility criteria
 
-A list of criteria is now defined for each subcategory, e.g., “train station.” If all criteria are met, this location is considered accessible for the a11y-Score. For train stations, this could mean, for example, that they are wheelchair accessible - e.g. every area is accessible via ramps or elevators - or that they have a tactile guidance system.
+We define a list of criteria for each subcategory, e.g., “train station.” If a location meets all criteria, it is considered accessible for the a11y-Score. For train stations, for example, we include wheelchair accessibility. This means that every area of the building is accessible at ground level. Floor guidance systems, real-time departure boards, and audio announcements are also included, along with many other criteria.
 
 ### Weighting of criteria
 
-These criteria are then weighted to reflect their importance for accessibility. For example, the wheelchair accessibility of a train station could be weighted more heavily than the presence of a toilet with grab bars.
+Since the criteria have varying degrees of influence on actual accessibility, they are weighted. For example, the wheelchair accessibility of a train station could be weighted differently than the presence of grab bars on both sides of a toilet.
 
 ### Data quality
 
-The quality of data in OSM can vary because it is maintained by volunteers. Therefore, data quality is also included in the calculation of the a11y-Score. Criteria for which the data is unclear or incomplete are weighted lower accordingly.
+Data completeness in OSM can vary locally, as the map is maintained by volunteers. Therefore, the a11y-Score takes data quality into account. Criteria with incomplete data are weighted lower, if possible.
 
 ### Calculation of the a11y-Score
 
-An a11y-Score is then calculated for each category based on the weighted criteria and data quality. These scores are then weighted and aggregated to obtain an overall score for a specific region.
+Based on the weighted criteria and data quality, the system ultimately calculates an a11y score for each category. These category scores are weighted again and then averaged to obtain an overall score for a region.
 
 ### Further information
 

@@ -1,12 +1,14 @@
 ## Was ist der a11y-Score?
 
-Die gebaute Infrastruktur in unseren Städten und auf dem Land ist für Millionen Menschen mit Behinderungen oft voller Hindernisse. Dies schränkt ihre Alltagsmobilität und u.U. Lebensqualität stark ein. Ein großes Problem, das klugen Entscheidungen für Verbesserungen im Wege steht: Häufig fehlt es an einem umfassenden Überblick und vergleichbaren Daten zur tatsächlichen Barrierefreiheit.
+Ob in der Stadt oder auf dem Land: Gebäude und Wege sind für Millionen Menschen oft voller Hindernisse. Dies schränkt ihre Alltagsmobilität und Lebensqualität stark ein.
+
+Ein großes Problem, das klugen Entscheidungen für Verbesserungen im Wege steht: Häufig fehlt es an einem umfassenden Überblick und vergleichbaren Daten zur tatsächlichen Barrierefreiheit.
 
 ### Ein weltweiter Datenlayer für Barrierefreiheit
 
 Das Projekt a11y-Score zielt darauf ab, die Barrierefreiheit der physischen Welt messbar und vergleichbar zu machen. Er ist dabei mehr als nur eine Datenauswertung. Es ist unser Ziel, erstmals einen verlässlichen Indikator zu schaffen, der Regionen hinsichtlich ihrer Barrierefreiheit weltweit vergleichbar macht, ein Datenlayer für Barrierefreiheit.
 
-Dieses Vorhaben wird durch das Bundesministerium für Verkehr (BMV) im Rahmen der mFUND-Initiative gefördert. Dies unterstreicht die bundesweite Relevanz und den strategischen Wert unseres Ansatzes, die digitale Transformation im Bereich Mobilität voranzutreiben und die Teilhabe zu verbessern.
+Dieses Vorhaben wird durch das Bundesministerium für Verkehr (BMV) im Rahmen der [mFUND-Initiative gefördert](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html). Dies unterstreicht die bundesweite Relevanz und den strategischen Wert unseres Ansatzes, die digitale Transformation im Bereich Mobilität voranzutreiben und die Teilhabe zu verbessern.
 
 _(Falls Sie sich fragen, was "a11y" bedeutet: das ist die Kurzform für "accessibility". Die "11" dient dabei als Platzhalter für elf Buchstaben zwischen dem "a" und dem "y" – ein kleiner "Nerd-Fakt" aus der Tech-Welt.)_
 
@@ -18,7 +20,7 @@ Der a11y-Score liefert einen einheitlichen Wert, der die Barrierefreiheit in Sta
 
 #### Grundlage für Entscheidungen
 
-Er kann als Key Performance Indicator (KPI) dienen, um den Status Quo zu bewerten, Fortschritte über die Zeit zu messen und gezielte Handlungsempfehlungen abzuleiten (z.B. für bauliche Maßnahmen, Datenerhebungen, Kampagnen).
+Der a11y-Score kann als Key Performance Indicator (KPI) dienen, um den Status Quo zu bewerten, Fortschritte über die Zeit zu messen und gezielte Handlungsempfehlungen abzuleiten (z.B. für bauliche Maßnahmen, Datenerhebungen, Kampagnen)
 
 #### Echte Inklusion
 
