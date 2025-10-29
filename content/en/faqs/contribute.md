@@ -4,9 +4,11 @@
 
 Do you work for a government agency, company, or organization that has relevant data? [Contact us](/faqs/give-feedback) to discuss how this data can be incorporated into the a11y-Score.
 
+Please also read [this guide (German), which describes how you can integrate OpenStreetMap data into your processes](http://web.archive.org/web/20240527121153/https://www.bav.admin.ch/dam/bav/fr/dokumente/themen/mmm/leitfaden-openstreetmap.pdf.download.pdf/Daten%20in%20OpenStreetMap%20integrieren%20%E2%80%93%20ein%20Leitfaden%20f%C3%BCr%20Dateninhaber.pdf).
+
 ### Collect data
 
-The a11y-Score uses data from [Open Street Map (OSM)](https://www.openstreetmap.org/) to assess accessibility. You can help by mapping places in your area and/or adding information about their accessibility.
+The a11y-Score uses data from [OpenStreetMap (OSM)](https://www.openstreetmap.org/) to assess accessibility. You can help by mapping places in your area and/or adding information about their accessibility.
 
 * [Find more information about the calculation method here](/faqs/how-is-it-calculated)
 * [Learn how you can contribute to Open Street Map here](https://learnosm.org/en/beginner/)
@@ -22,4 +24,11 @@ Are you familiar with geodata and/or software development? [Take a look at our G
 
 ### Tell others
 
-Change requires collective effort. Tell your friends, family, and colleagues about the a11y-Score and encourage them to join in. Only together can we create a truly inclusive world.
+Change requires collective effort:
+
+- Tell your friends, family, and colleagues about the a11y-Score.
+- Encourage those around you to get involved too: for example, work together to add wheelchair-accessible locations to [Wheelmap.org](https://wheelmap.org).
+- Make your city or local transportation authority [aware of our work](https://www.sozialhelden.de/topics/digitalisierung).
+- If you are reading this text on GitHub, give the GitHub project a star.
+
+Together, we can create a truly inclusive world and break down barriers on a large scale.

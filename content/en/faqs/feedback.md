@@ -1,6 +1,6 @@
 ## Give feedback
 
-If you have any feedback about our website, content, or services, we would love to hear from you. Please contact us by email at: [info@sozialhelden.de](mailto:info@sozialhelden.de)
+Do you have feedback about our website, content, or services? We would love to hear from you. Please contact us by email at: [info@sozialhelden.de](mailto:info@sozialhelden.de)
 
 ### Become a partner
 

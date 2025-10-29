@@ -1,6 +1,6 @@
 ## Feedback geben
 
-Wenn Sie Feedback zu unserer Website, unseren Inhalten oder unseren Diensten haben, würden wir uns freuen, von Ihnen zu hören. Wenden Sie sich bitte per E-Mail an: [info@sozialhelden.de](mailto:info@sozialhelden.de)
+Sie haben Feedback zu unserer Website, unseren Inhalten oder unseren Diensten? Wir würden wir uns freuen, von Ihnen zu hören. Wenden Sie sich bitte per E-Mail an: [info@sozialhelden.de](mailto:info@sozialhelden.de)
 
 ### Partner\*in werden
 
