@@ -16,6 +16,8 @@ import type { Route } from "./+types/root";
 
 import "./app.css";
 import { TooltipProvider } from "@sozialhelden/ui";
+import { BreakpointContextProvider } from "~/hooks/useBreakpoints";
+import { I18nContextProvider } from "~/hooks/useI18n";
 import { devOverwritesMiddleware } from "~/middleware/dev-overwrites";
 
 export const middleware: Route.MiddlewareFunction[] = [
@@ -72,15 +74,19 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <TooltipProvider>
-          {isLoading ? (
-            <div className="fixed inset-0 bg-white flex items-center justify-center z-[2000]">
-              <LoaderCircle size={30} className="animate animate-spin" />
-            </div>
-          ) : (
-            <Outlet />
-          )}
-        </TooltipProvider>
+        <I18nContextProvider languageTag={languageTag}>
+          <BreakpointContextProvider>
+            <TooltipProvider>
+              {isLoading ? (
+                <div className="fixed inset-0 bg-white flex items-center justify-center z-[2000]">
+                  <LoaderCircle size={30} className="animate animate-spin" />
+                </div>
+              ) : (
+                <Outlet />
+              )}
+            </TooltipProvider>
+          </BreakpointContextProvider>
+        </I18nContextProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

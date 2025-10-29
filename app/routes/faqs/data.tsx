@@ -9,7 +9,7 @@ import {
 } from "@sozialhelden/ui";
 import { T } from "@transifex/react";
 import { useLoaderData } from "react-router";
-import CategoryIcon from "~/components/category/CategoryIcon";
+import CategoryIcon from "~/components/Icon";
 import OSMTag from "~/components/OSMTag";
 import { i18nContext } from "~/context";
 import { apiFetch } from "~/utils/api";
@@ -93,11 +93,7 @@ export default function FaqData() {
                 <TableCell className="align-top py-3">
                   {index === 0 && (
                     <span className="inline-flex items-center gap-2 underline font-medium">
-                      <CategoryIcon
-                        category={category.id}
-                        aria-hidden
-                        size={20}
-                      />
+                      <CategoryIcon id={category.id} aria-hidden size={20} />
                       <span>{category.name}</span>
                     </span>
                   )}

@@ -1,5 +1,5 @@
 import { T } from "@transifex/react";
-import { getScoreColors } from "~/utils/score";
+import { getScoreColors, getScoreRating } from "~/utils/score";
 
 export default function ScorePoints({
   score,
@@ -14,12 +14,12 @@ export default function ScorePoints({
 
   const sizeWrapperClasses = {
     sm: "leading-none text-xs",
-    lg: "leading-tight text-sm",
+    lg: "leading-tight text-xs md:text-sm",
   };
 
   const sizeScoreClasses = {
     sm: "text-3xl font-medium",
-    lg: "text-6xl font-bold",
+    lg: "text-3xl sm:text-4xl md:text-6xl font-bold",
   };
 
   return (
@@ -33,7 +33,7 @@ export default function ScorePoints({
           <span
             className={`${sizeScoreClasses[size]} ${isColored ? colors.fg : ""}`}
           >
-            {score}
+            {getScoreRating(score) === "unavailable" ? "-" : score}
           </span>
         }
       />

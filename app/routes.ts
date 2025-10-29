@@ -10,19 +10,19 @@ export default [
   layout("./layouts/default.tsx", [
     index("routes/home.tsx"),
 
-    route("/scores/:adminArea", "./routes/scores/index.tsx", [
-      index("./routes/scores/empty-state.tsx"),
+    route("/scores/:adminArea", "./routes/score/index.tsx", [
+      index("./routes/score/empty-state.tsx"),
       route(
         "/scores/:adminArea/:topLevelCategory",
-        "./routes/scores/top-level-category.tsx",
+        "./routes/score/top-level-category.tsx",
         [
           route(
             "/scores/:adminArea/:topLevelCategory/:subCategory",
-            "./routes/scores/empty-state.tsx",
+            "./routes/score/sub-category.tsx",
             [
               route(
                 "/scores/:adminArea/:topLevelCategory/:subCategory/:criterion",
-                "./routes/scores/empty-state.tsx",
+                "./routes/score/criterion.tsx",
               ),
             ],
           ),

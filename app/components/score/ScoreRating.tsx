@@ -7,29 +7,29 @@ export function ScoreRating({ score }: { score: number }) {
 
   return (
     <span
-      className={`inline-flex uppercase gap-2 font-medium text-lg items-center leading-tight ${getScoreColors(score).fg}`}
+      className={`inline-flex uppercase gap-1.5 md:gap-2 font-medium md:text-lg items-center leading-tight ${getScoreColors(score).fg}`}
     >
       {rating === "excellent" && (
         <>
-          <SmilePlus size={18} />
+          <SmilePlus size={18} className="scale-90 md:scale-100" />
           <T _str="Excellent" />
         </>
       )}
       {rating === "good" && (
         <>
-          <Smile size={18} />
+          <Smile size={18} className="scale-90 md:scale-100" />
           <T _str="Good" />
         </>
       )}
       {rating === "okay" && (
         <>
-          <Meh size={18} />
+          <Meh size={18} className="scale-90 md:scale-100" />
           <T _str="Okay" />
         </>
       )}
       {rating === "poor" && (
         <>
-          <Frown size={18} />
+          <Frown size={18} className="scale-90 md:scale-100" />
           <T _str="Poor" />
         </>
       )}
