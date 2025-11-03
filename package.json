@@ -37,7 +37,7 @@
     "@tailwindcss/vite": "4.1.16",
     "@tailwindcss/typography": "0.5.19",
     "@transifex/cli": "7.1.4",
-    "@types/node": "22.18.13",
+    "@types/node": "22.19.0",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "env-cmd": "11.0.0",
