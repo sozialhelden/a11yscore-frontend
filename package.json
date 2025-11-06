@@ -34,7 +34,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.7",
     "@react-router/dev": "7.9.5",
-    "@tailwindcss/vite": "4.1.16",
+    "@tailwindcss/vite": "4.1.17",
     "@tailwindcss/typography": "0.5.19",
     "@transifex/cli": "7.1.4",
     "@types/node": "24.10.0",
@@ -42,7 +42,7 @@
     "@types/react-dom": "19.2.2",
     "env-cmd": "11.0.0",
     "husky": "9.1.7",
-    "tailwindcss": "4.1.16",
+    "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite": "7.2.1",
     "vite-tsconfig-paths": "5.1.4"
