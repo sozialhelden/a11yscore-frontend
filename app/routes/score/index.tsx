@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { Outlet, useLoaderData, useParams } from "react-router";
+import { Outlet, redirect, useLoaderData, useParams } from "react-router";
 import Main from "~/components/Main";
 import TopLevelCategoryListItem from "~/routes/score/components/list/TopLevelCategoryListItem";
 import ScoreDetailHeader from "~/routes/score/components/ScoreDetailHeader";
@@ -9,26 +9,36 @@ import ScoreDetailScrollArea, {
 } from "~/routes/score/components/ScoreDetailScrollArea";
 import type { ScoreResults } from "~/routes/score/types/api";
 import { apiFetch } from "~/utils/api";
-import { getImage, type WikimediaImage } from "~/utils/wikidata";
+import { decodeOsmIdHash } from "~/utils/osmIds";
 import type { Route } from "./+types/index";
 
 export async function loader({
   params: { adminArea },
   context,
 }: Route.LoaderArgs) {
-  const { score } = await apiFetch<ScoreResults>(
+  const [hash, ...slugParts] = adminArea.split("-");
+  const slug = slugParts.join("-");
+
+  if (!hash) {
+    throw new Response("Not Found", { status: 404 });
+  }
+
+  const osmId = decodeOsmIdHash(hash);
+  const results = await apiFetch<ScoreResults>(
     context,
-    `v1/admin-areas/slug:${adminArea}/scores/latest`,
+    `v1/admin-areas/osm:${osmId}/scores/latest`,
   );
-  const image = await getImage(score.adminArea.name);
-  return { image, score };
+
+  if (slug !== results.adminArea.slug) {
+    const correctSlug = results.adminArea.slug;
+    throw redirect(`/scores/${hash}-${correctSlug}`, 301);
+  }
+
+  return results;
 }
 
 export default function ScorePage() {
-  const { score, image } = useLoaderData<{
-    score: ScoreResults["score"];
-    image: WikimediaImage;
-  }>();
+  const { score, adminArea } = useLoaderData<ScoreResults>();
 
   const { topLevelCategory, subCategory, criterion } = useParams();
   const columnCount = useMemo(() => {
@@ -52,11 +62,11 @@ export default function ScorePage() {
 
   return (
     <div>
-      <ScoreDetailHeaderImage image={image} />
+      <ScoreDetailHeaderImage image={adminArea.image} />
       <Main size="wide">
         <div className="space-y-8 md:space-y-12 pb-24">
           <ScoreDetailHeader
-            name={score.adminArea.name}
+            name={adminArea.name}
             score={score.score}
             lastUpdated={score.createdAt}
             className="-mt-8 md:-mt-32"
