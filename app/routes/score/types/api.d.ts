@@ -34,12 +34,20 @@ export type TopLevelCategoryScoreResult = BaseScoreResult & {
 };
 
 export type ScoreResults = {
+  adminArea: {
+    id: string;
+    name: string;
+    slug: string;
+    osmId: number;
+    wikidata: string;
+    image?: {
+      artist?: string;
+      url?: string;
+      license?: string;
+    };
+  };
   score: {
     score: number;
-    adminArea: {
-      id: number;
-      name: string;
-    };
     createdAt: string;
     toplevelCategories: TopLevelCategoryScoreResult[];
   };

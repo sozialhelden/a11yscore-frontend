@@ -1,16 +1,19 @@
 import { T } from "@transifex/react";
 import DOMPurify from "dompurify";
 import { useMemo } from "react";
-import type { WikimediaImage } from "~/utils/wikidata";
 
 export default function ScoreDetailHeaderImage({
   image,
 }: {
-  image: WikimediaImage;
+  image?: {
+    url?: string;
+    artist?: string;
+    license?: string;
+  };
 }) {
   const sanitizedArtist = useMemo(
     () =>
-      image
+      image?.artist
         ? DOMPurify.sanitize(image.artist, {
             FORBID_TAGS: ["b", "small", "i", "u", "em", "strong"],
           })

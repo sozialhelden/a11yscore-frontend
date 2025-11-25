@@ -20,14 +20,22 @@ import { z } from "zod";
 import FaqLinks from "~/components/FaqLinks";
 import Main from "~/components/Main";
 import { apiFetch } from "~/utils/api";
+import { encodeOsmId } from "~/utils/osmIds";
 import type { Route } from "./+types/home";
 
 type AdminAreasResult = {
   adminAreas: {
-    id: number;
+    osmId: number;
     name: string;
     slug: string;
   }[];
+};
+
+type AdminArea = {
+  osmId: number;
+  name: string;
+  slug: string;
+  hash: string;
 };
 
 export function meta() {
@@ -42,11 +50,17 @@ export function meta() {
 }
 
 export async function loader({ context }: Route.LoaderArgs) {
-  return await apiFetch<AdminAreasResult>(context, `v1/admin-areas`);
+  const result = await apiFetch<AdminAreasResult>(context, `v1/admin-areas`);
+  return result.adminAreas.map(
+    (adminArea): AdminArea => ({
+      ...adminArea,
+      hash: encodeOsmId(adminArea.osmId),
+    }),
+  );
 }
 
 export default function Home() {
-  const { adminAreas } = useLoaderData<AdminAreasResult>();
+  const adminAreas = useLoaderData<AdminArea[]>();
   const t = useT();
 
   const navigate = useNavigate();
@@ -55,7 +69,7 @@ export default function Home() {
 
   const formSchema = z.object({
     region: z.enum(
-      Object.values(adminAreas).map(({ slug }) => String(slug)),
+      adminAreas.map(({ slug, hash }) => `${hash}-${slug}`),
       t("Please select a valid region"),
     ),
   });
@@ -104,11 +118,13 @@ export default function Home() {
                         <SelectValue placeholder={t("Select a region")} />
                       </SelectTrigger>
                       <SelectContent>
-                        {adminAreas.map(({ slug, name }) => (
-                          <SelectItem key={slug} value={slug}>
-                            {name}
-                          </SelectItem>
-                        ))}
+                        {adminAreas
+                          .sort((a, b) => a.name.localeCompare(b.name))
+                          .map(({ slug, hash, name }) => (
+                            <SelectItem key={hash} value={`${hash}-${slug}`}>
+                              {name}
+                            </SelectItem>
+                          ))}
                       </SelectContent>
                     </Select>
                   </FormControl>
