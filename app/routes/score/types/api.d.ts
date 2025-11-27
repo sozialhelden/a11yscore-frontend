@@ -5,10 +5,16 @@ export type OsmTag = {
   value: string;
 };
 
+export type Score = {
+  score: number;
+  dataQualityFactor: number;
+  dataIsUnavailable: boolean;
+};
+
 export type BaseScoreResult = {
   id: string;
   name: string;
-  score: number;
+  score: Score;
 };
 
 export type CriterionScoreResult = BaseScoreResult & {
@@ -47,7 +53,7 @@ export type ScoreResults = {
     };
   };
   score: {
-    score: number;
+    score: Score;
     createdAt: string;
     toplevelCategories: TopLevelCategoryScoreResult[];
   };

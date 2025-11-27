@@ -1,8 +1,5 @@
 import { T, useT } from "@transifex/react";
-import { TriangleAlert } from "lucide-react";
 import { Outlet, useOutletContext } from "react-router";
-import Link from "~/components/Link";
-import OSMTag from "~/components/OSMTag";
 import OSMTagList from "~/components/OSMTagList";
 import ExplanationItem from "~/routes/score/components/explanation/ExplanationItem";
 import NoDataWarning from "~/routes/score/components/explanation/NoDataWarning";
@@ -13,7 +10,7 @@ import type {
   ScoreResults,
   TopLevelCategoryScoreResult,
 } from "~/routes/score/types/api";
-import { getScoreRating } from "~/utils/score";
+import { getScoreRating, sortByScore } from "~/utils/score";
 
 type OutletContext = ScoreResults & {
   topLevelCategory: TopLevelCategoryScoreResult;
@@ -89,30 +86,22 @@ export default function SubCategory() {
                   />
                 </p>
                 <div className="space-y-6">
-                  {subCategory.topics
-                    .sort((a, b) => {
-                      return (b.score || 0) - (a.score || 0);
-                    })
-                    .map((topic) => (
-                      <div key={topic.id}>
-                        <h4 className="font-medium">{topic.name}</h4>
-                        <ul className="-mx-6">
-                          {topic.criteria
-                            .sort((a, b) => {
-                              return (b.score || 0) - (a.score || 0);
-                            })
-                            .map((criterion) => (
-                              <li key={criterion.id}>
-                                <CriterionListItem
-                                  id={criterion.id}
-                                  score={criterion.score}
-                                  name={criterion.name}
-                                />
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    ))}
+                  {subCategory.topics.sort(sortByScore).map((topic) => (
+                    <div key={topic.id}>
+                      <h4 className="font-medium">{topic.name}</h4>
+                      <ul className="-mx-6">
+                        {topic.criteria.sort(sortByScore).map((criterion) => (
+                          <li key={criterion.id}>
+                            <CriterionListItem
+                              id={criterion.id}
+                              score={criterion.score}
+                              name={criterion.name}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </>
             )}
