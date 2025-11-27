@@ -75,7 +75,7 @@ export default function ScorePage() {
             <div className={`space-y-4`}>
               {score.toplevelCategories
                 .sort((a, b) => {
-                  return (b.score || 0) - (a.score || 0);
+                  return (b.score.score || 0) - (a.score.score || 0);
                 })
                 .map((topLevelCategory) => (
                   <TopLevelCategoryListItem

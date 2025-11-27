@@ -3,6 +3,7 @@ import SubCategoryListItem from "~/routes/score/components/list/SubCategoryListI
 import ScoreDetailColumnCard from "~/routes/score/components/ScoreDetailColumnCard";
 import { useScoreRoutes } from "~/routes/score/hooks/useScoreRoutes";
 import type { ScoreResults } from "~/routes/score/types/api";
+import { sortByScore } from "~/utils/score";
 
 export default function TopLevelCategory() {
   const { getTopLevelCategoryId, isTopLevelCategoryActive } = useScoreRoutes();
@@ -25,9 +26,7 @@ export default function TopLevelCategory() {
         >
           <ul className="-mx-6">
             {topLevelCategory.subCategories
-              .sort((a, b) => {
-                return (b.score || 0) - (a.score || 0);
-              })
+              .sort(sortByScore)
               .map((subCategory) => (
                 <li key={subCategory.id}>
                   <SubCategoryListItem

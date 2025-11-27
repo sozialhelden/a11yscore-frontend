@@ -1,4 +1,5 @@
 import { T } from "@transifex/react";
+import type { Score } from "~/routes/score/types/api";
 import { getScoreColors, getScoreRating } from "~/utils/score";
 
 export default function ScorePoints({
@@ -6,7 +7,7 @@ export default function ScorePoints({
   size = "lg",
   isColored = false,
 }: {
-  score: number;
+  score: Score;
   size?: "sm" | "lg";
   isColored?: boolean;
 }) {
@@ -33,7 +34,7 @@ export default function ScorePoints({
           <span
             className={`${sizeScoreClasses[size]} ${isColored ? colors.fg : ""}`}
           >
-            {getScoreRating(score) === "unavailable" ? "-" : score}
+            {getScoreRating(score) === "unavailable" ? "-" : score.score}
           </span>
         }
       />

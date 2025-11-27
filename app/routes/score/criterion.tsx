@@ -1,5 +1,4 @@
 import { T, useT } from "@transifex/react";
-import { marked } from "marked";
 import { useCallback, useMemo } from "react";
 import { useOutletContext } from "react-router";
 import OSMTagList from "~/components/OSMTagList";

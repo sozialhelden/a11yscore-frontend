@@ -1,8 +1,9 @@
 import { T } from "@transifex/react";
 import { Frown, Meh, Smile, SmilePlus } from "lucide-react";
+import type { Score } from "~/routes/score/types/api";
 import { getScoreColors, getScoreRating } from "~/utils/score";
 
-export function ScoreRating({ score }: { score: number }) {
+export function ScoreRating({ score }: { score: Score }) {
   const rating = getScoreRating(score);
 
   return (
