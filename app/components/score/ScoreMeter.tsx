@@ -1,4 +1,5 @@
 import { type ComponentProps, useId } from "react";
+import type { Score } from "~/routes/score/types/api";
 import { getScorePercentage } from "~/utils/score";
 
 export type MeterSize = "lg";
@@ -10,7 +11,7 @@ export default function ScoreMeter({
   className,
   ...props
 }: ComponentProps<"div"> & {
-  score: number;
+  score: Score;
   size?: MeterSize;
 }) {
   const id = useId();

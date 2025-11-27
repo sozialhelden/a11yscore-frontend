@@ -2,6 +2,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@sozialhelden/ui";
 import { T } from "@transifex/react";
 import { MoveRight, TrendingDown, TrendingUp } from "lucide-react";
 import type { ComponentProps } from "react";
+import type { Score } from "~/routes/score/types/api";
 import { getScoreColors, getScoreRating, type ScoreTrend } from "~/utils/score";
 export default function ScoreBox({
   score,
@@ -9,7 +10,7 @@ export default function ScoreBox({
   className,
   ...props
 }: {
-  score: number;
+  score: Score;
   trend?: ScoreTrend;
 } & ComponentProps<"span">) {
   return (
@@ -22,7 +23,7 @@ export default function ScoreBox({
           <span>-</span>
         ) : (
           <>
-            {score}&nbsp;
+            {score.score}&nbsp;
             <span className="text-xs">
               <T _str="Pts." />
             </span>

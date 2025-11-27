@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { NavLink } from "react-router";
 import ScoreBox from "~/components/score/ScoreBox";
+import type { Score } from "~/routes/score/types/api";
 
 export default function BaseListItem({
   to,
@@ -9,7 +10,7 @@ export default function BaseListItem({
   isActive,
 }: {
   to: string;
-  score: number;
+  score: Score;
   name: string;
   isActive: boolean;
 }) {

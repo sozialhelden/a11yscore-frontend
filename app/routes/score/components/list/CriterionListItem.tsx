@@ -1,5 +1,6 @@
 import BaseListItem from "~/routes/score/components/list/BaseListItem";
 import { useScoreRoutes } from "~/routes/score/hooks/useScoreRoutes";
+import type { Score } from "~/routes/score/types/api";
 
 export default function CriterionListItem({
   id,
@@ -7,7 +8,7 @@ export default function CriterionListItem({
   name,
 }: {
   id: string;
-  score: number;
+  score: Score;
   name: string;
 }) {
   const { isCriterionActive, getCriterionUrl } = useScoreRoutes();

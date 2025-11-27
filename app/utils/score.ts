@@ -1,3 +1,6 @@
+import { BadgeCheck, BadgeInfo, BadgePlus, BadgeX } from "lucide-react";
+import type { Score } from "~/routes/score/types/api";
+
 export type ScoreRating =
   | "excellent"
   | "good"
@@ -9,12 +12,15 @@ export type ScoreTrend = "up" | "stable" | "down";
 
 const maxPoints = 100;
 
-export function getScorePercentage(score: number): number {
+export function getScorePercentage({ score }: Score): number {
   return score / maxPoints;
 }
 
-export function getScoreRating(score: number): ScoreRating {
-  if (score === null || score === 0) {
+export function getScoreRating({
+  score,
+  dataIsUnavailable,
+}: Score): ScoreRating {
+  if (score === null || score === 0 || dataIsUnavailable) {
     return "unavailable";
   }
   if (score >= 80) {
@@ -29,7 +35,7 @@ export function getScoreRating(score: number): ScoreRating {
   return "poor";
 }
 
-export function getScoreColors(score: number): {
+export function getScoreColors(score: Score): {
   fg: string;
   bg: string;
   both: string;
@@ -48,4 +54,35 @@ export function getScoreColors(score: number): {
     ...selection,
     both: `${selection.fg} ${selection.bg}`,
   };
+}
+
+export function sortByScore(a: { score: Score }, b: { score: Score }): number {
+  return (b.score.score || 0) - (a.score.score || 0);
+}
+
+export function getDataQualityIcon(score: Score) {
+  const rating = getDataQualityRating(score);
+  if (rating === "excellent") {
+    return BadgePlus;
+  }
+  if (rating === "good") {
+    return BadgeCheck;
+  }
+  if (rating === "okay") {
+    return BadgeInfo;
+  }
+  return BadgeX;
+}
+
+export function getDataQualityRating(score: Score): ScoreRating {
+  if (score.dataQualityFactor >= 0.9) {
+    return "excellent";
+  }
+  if (score.dataQualityFactor >= 0.7) {
+    return "good";
+  }
+  if (score.dataQualityFactor >= 0.3) {
+    return "okay";
+  }
+  return "poor";
 }

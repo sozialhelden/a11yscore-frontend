@@ -6,6 +6,7 @@ import ScoreMeter from "~/components/score/ScoreMeter";
 import ScorePoints from "~/components/score/ScorePoints";
 import { ScoreRating } from "~/components/score/ScoreRating";
 import { useI18n } from "~/hooks/useI18n";
+import type { Score } from "~/routes/score/types/api";
 
 export default function ScoreDetailHeader({
   name,
@@ -15,7 +16,7 @@ export default function ScoreDetailHeader({
   ...props
 }: ComponentProps<"div"> & {
   name: string;
-  score: number;
+  score: Score;
   lastUpdated: string;
 }) {
   const { languageTag } = useI18n();
