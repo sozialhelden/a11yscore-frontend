@@ -57,7 +57,9 @@ export function getScoreColors(score: Score): {
 }
 
 export function sortByScore(a: { score: Score }, b: { score: Score }): number {
-  return (b.score.score || 0) - (a.score.score || 0);
+  const aScore = a.score.dataIsUnavailable ? 0 : a.score.score || 0;
+  const bScore = b.score.dataIsUnavailable ? 0 : b.score.score || 0;
+  return bScore - aScore;
 }
 
 export function getDataQualityIcon(score: Score) {

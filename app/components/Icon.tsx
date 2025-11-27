@@ -20,6 +20,8 @@ import {
   Toilet,
   TrainFront,
   Utensils,
+  Stethoscope,
+  Users,
 } from "lucide-react";
 
 export default function Icon({ id, size }: { id: string; size: number }) {
@@ -30,6 +32,8 @@ export default function Icon({ id, size }: { id: string; size: number }) {
     // top-level categories
     "food-and-drinks": Utensils,
     "public-transport": BusFront,
+    "health-care": Stethoscope,
+    "social-care": Users,
     // sub-categories
     "drinking-water": GlassWater,
     "food-stores": Store,
