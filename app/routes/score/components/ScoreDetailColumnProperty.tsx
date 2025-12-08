@@ -10,7 +10,7 @@ export default function ScoreDetailColumnProperty({
 
   return (
     <div
-      className={`grid grid-cols-[min-content_1fr] gap-3 text-gray-600 text-xs *:nth-2:mt-4 *:nth-1:mt-4 ${className}`}
+      className={`grid grid-cols-[min-content_1fr] gap-3 text-gray-600 text-s *:nth-2:mt-4 *:nth-1:mt-4 ${className}`}
       {...props}
     >
       {IconComponent && (
