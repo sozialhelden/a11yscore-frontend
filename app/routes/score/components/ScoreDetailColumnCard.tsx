@@ -41,11 +41,6 @@ export default function ScoreDetailColumnCard({
           </h2>
           <ScorePoints score={score} isColored={true} size="sm" />
         </div>
-        {description && (
-          <ScoreDetailColumnProperty icon={MessageCircleQuestionMark}>
-            {description}
-          </ScoreDetailColumnProperty>
-        )}
 
         <ScoreDetailColumnProperty icon={getDataQualityIcon(score)}>
           <Tooltip>
@@ -74,6 +69,12 @@ export default function ScoreDetailColumnCard({
             </TooltipContent>
           </Tooltip>
         </ScoreDetailColumnProperty>
+
+        {description && (
+          <ScoreDetailColumnProperty icon={MessageCircleQuestionMark}>
+            {description}
+          </ScoreDetailColumnProperty>
+        )}
       </div>
       {children}
     </Card>

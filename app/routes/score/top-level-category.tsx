@@ -22,6 +22,7 @@ export default function TopLevelCategory() {
           icon={topLevelCategory.id}
           name={topLevelCategory.name}
           score={topLevelCategory.score}
+          description={topLevelCategory.description}
           isActive={isActive}
         >
           <ul className="-mx-6">
