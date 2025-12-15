@@ -82,7 +82,7 @@ export default function ScoreDetailScrollArea({
 
   return (
     <div className="space-y-2">
-      <ul className="flex justify-between">
+      <ul className="flex justify-between sticky md:static top-0 z-40 ">
         <li>
           <Button
             variant="outline"
