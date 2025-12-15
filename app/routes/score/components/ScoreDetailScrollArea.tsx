@@ -82,7 +82,7 @@ export default function ScoreDetailScrollArea({
 
   return (
     <div className="space-y-2">
-      <ul className="flex justify-between">
+      <ul className="flex justify-between sticky md:static top-0 z-40 ">
         <li>
           <Button
             variant="outline"
@@ -90,7 +90,7 @@ export default function ScoreDetailScrollArea({
             size="icon"
             onClick={previous}
             aria-label={t("Previous column")}
-            disabled={scrollIndex === 0}
+            hidden={scrollIndex === 0}
           >
             <ArrowLeft aria-hidden />
           </Button>
@@ -102,7 +102,7 @@ export default function ScoreDetailScrollArea({
             size="icon"
             onClick={next}
             aria-label={t("Next column")}
-            disabled={scrollIndex === columnCount - columnsInViewport}
+            hidden={scrollIndex === columnCount - columnsInViewport}
           >
             <ArrowRight aria-hidden />
           </Button>

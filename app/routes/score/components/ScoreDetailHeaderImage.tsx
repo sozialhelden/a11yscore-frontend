@@ -23,7 +23,7 @@ export default function ScoreDetailHeaderImage({
 
   return (
     <div
-      className="aspect-[16/6] bg-cover bg-center bg-linear-to-br from-indigo-300 to-gray-500 relative"
+      className="aspect-[16/4] bg-cover bg-center bg-linear-to-br from-indigo-300 to-gray-500 relative"
       style={
         image?.url ? { backgroundImage: `url(${image.url}?width=1920)` } : {}
       }
