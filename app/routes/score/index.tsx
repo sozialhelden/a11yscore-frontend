@@ -28,6 +28,7 @@ export async function loader({
     context,
     `v1/admin-areas/osm:${osmId}/scores/latest`,
   );
+  console.log("results", results);
 
   if (slug !== results.adminArea.slug) {
     const correctSlug = results.adminArea.slug;

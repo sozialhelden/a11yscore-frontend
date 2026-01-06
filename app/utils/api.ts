@@ -13,6 +13,7 @@ export function getApiUrl(
   );
 
   url.searchParams.append("lang", languageTag!);
+  console.log("languageTag", languageTag);
 
   return url.toString();
 }
