@@ -4,6 +4,7 @@ import calculationDe from "../../content/de/faqs/calculation.md?raw";
 import contributeDe from "../../content/de/faqs/contribute.md?raw";
 import dataDe from "../../content/de/faqs/data.md?raw";
 import feedbackDe from "../../content/de/faqs/feedback.md?raw";
+import regionsDe from "../../content/de/faqs/regions.md?raw";
 import scoreDe from "../../content/de/faqs/score.md?raw";
 import whatDe from "../../content/de/faqs/what.md?raw";
 import legalDe from "../../content/de/pages/legal.md?raw";
@@ -11,6 +12,7 @@ import calculationEn from "../../content/en/faqs/calculation.md?raw";
 import contributeEn from "../../content/en/faqs/contribute.md?raw";
 import dataEn from "../../content/en/faqs/data.md?raw";
 import feedbackEn from "../../content/en/faqs/feedback.md?raw";
+import regionsEn from "../../content/en/faqs/regions.md?raw";
 import scoreEn from "../../content/en/faqs/score.md?raw";
 import whatEn from "../../content/en/faqs/what.md?raw";
 import legalEn from "../../content/en/pages/legal.md?raw";
@@ -19,6 +21,7 @@ export type ContentId =
   | "faqs/how-is-it-calculated"
   | "faqs/how-to-contribute"
   | "faqs/what-data-is-being-used"
+  | "faqs/available-regions"
   | "faqs/give-feedback"
   | "faqs/how-to-interpret-the-score"
   | "faqs/what-is-a11y-score"
@@ -36,6 +39,10 @@ const content: Record<ContentId, Partial<Record<LanguageTag, string>>> = {
   "faqs/what-data-is-being-used": {
     en: dataEn,
     de: dataDe,
+  },
+  "faqs/available-regions": {
+    en: regionsEn,
+    de: regionsDe,
   },
   "faqs/give-feedback": {
     en: feedbackEn,
