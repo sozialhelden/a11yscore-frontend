@@ -1,31 +1,31 @@
-## What is a11y-Score?
+## What is the a11y-Score?
 
-Whether in the city or in the countryside, buildings and paths are often full of obstacles for millions of people. This severely restricts their everyday mobility and quality of life.
+Whether in the city or the countryside: buildings and pathways are full of obstacles for millions of people. This severely limits their daily lives and quality of life. That is why cities and municipalities in Germany have long been legally required to establish accessibility and inclusion.
 
-A major problem that stands in the way of smart decisions for improvements is the frequent lack of a comprehensive overview and comparable data on actual accessibility.
+When trying to make smart decisions and take measures to improve the situation, one often encounters a problem: there is no overview or meaningful data to determine how good or bad accessibility actually is.
 
-### A new indicator for accessibility
+### Measuring, evaluating, and comparing accessibility
 
-The a11y-Score project aims to make the accessibility of the physical world measurable and comparable. It is more than just a data evaluation. Our goal is to create, for the first time, a reliable indicator that makes regions worldwide comparable in terms of their accessibility.
+This is exactly where our development project comes in: the a11y-Score is a program that measures and evaluates actual accessibility in a region, city, or municipality based on defined characteristics and categories. For the first time, this creates a way to compare the accessibility of different regions.
 
-This project is funded by the Federal Ministry of Transport (BMV) as part of the [mFUND initiative](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html). This underscores the nationwide relevance and strategic value of our approach to driving digital transformation in the field of mobility and improving participation.
+The name a11y-Score describes exactly that: "a11y" is a common abbreviation for "accessibility." The "11" stands for the eleven letters between the "a" and the "y." Combined with "Score" — the English word for a points-based rating or grade — it simply means "Accessibility Rating."
 
-_(If you're wondering what “a11y” means, it's short for “accessibility.” The “11” serves as a placeholder for eleven letters between the “a” and the ‘y’ – a little “nerd fact” from the tech world.)_
+This project is funded by the Federal Ministry for Digital and Transport (BMDV) as part of the [mFUND initiative](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html). This highlights how relevant our approach is nationwide — for modern, digital mobility and greater participation.
 
-### What the project aims to achieve
+### What the a11y-Score offers
 
 #### Visibility and comparability
 
-The a11y-Score provides a uniform value that reflects accessibility in neighborhoods, counties, or entire regions.
+The a11y-Score provides a unified value that reflects accessibility in neighborhoods, districts, or entire regions. It is not limited to Germany; it can potentially be used worldwide in the future.
 
-#### Basis for decisions
+#### A basis for decisions
 
-It can serve as a key performance indicator (KPI) to assess the status quo, measure progress over time, and derive targeted recommendations for action (e.g. for construction measures, data collection, campaigns).
+The a11y-Score can serve as a Key Performance Indicator (KPI), essentially the primary metric for accessibility: it can be used to determine the current status of a region, derive targeted recommendations for action (e.g., for construction projects, data collection, public awareness campaigns), and measure and document progress over time.
 
-#### True inclusion
+#### Real inclusion
 
-By providing this data, we are helping to improve the participation of people with disabilities and create a man-made environment that works for everyone.
+By providing this data, we contribute to improving the participation of people with disabilities and creating a human-made environment that works for everyone.
 
-### Additional information
+### Further information
 
-* [Projectdescription mFund (German)](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html)
+* [mFUND project description](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html)
