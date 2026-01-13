@@ -1,3 +1,4 @@
+import { T } from "@transifex/react";
 import type { ComponentProps } from "react";
 import { NavLink } from "react-router";
 import Card from "~/components/Card";
@@ -7,7 +8,7 @@ import { useScoreRoutes } from "~/routes/score/hooks/useScoreRoutes";
 import type { TopLevelCategoryScoreResult } from "~/routes/score/types/api";
 
 export default function TopLevelCategoryListItem({
-  topLevelCategory: { id, name, score, interpretation },
+  topLevelCategory: { id, name, score, interpretation, planned },
   className,
   ...props
 }: ComponentProps<"div"> & {
@@ -30,14 +31,18 @@ export default function TopLevelCategoryListItem({
           className="after:content-[''] after:absolute after:inset-0"
           preventScrollReset={true}
         >
-          <h4 className="leading-none flex gap-3 items-center text-lg">
+          <h4
+            className={`leading-none flex gap-3 items-center text-lg ${planned ? "text-gray-400" : ""}`}
+          >
             <CategoryIcon id={id} aria-hidden size={24} />
             {name}
           </h4>
         </NavLink>
-        <ScoreBox className="relative z-20" score={score} />
+        {!planned && <ScoreBox className="relative z-20" score={score} />}
       </div>
-      <div className="text-md text-gray-600">{interpretation}</div>
+      <div className={`text-md ${planned ? "text-gray-400" : "text-gray-600"}`}>
+        {planned ? <T _str="Coming soon!" /> : interpretation}
+      </div>
     </Card>
   );
 }

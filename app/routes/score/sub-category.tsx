@@ -22,7 +22,7 @@ export default function SubCategory() {
   const { getSubCategoryId, isSubCategoryActive } = useScoreRoutes();
   const { score, topLevelCategory } = useOutletContext<OutletContext>();
 
-  const subCategory = topLevelCategory.subCategories.find(
+  const subCategory = topLevelCategory.subCategories?.find(
     ({ id }) => id === getSubCategoryId(),
   );
   const isActive = isSubCategoryActive();
