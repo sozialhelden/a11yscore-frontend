@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@sozialhelden/ui";
 import { T } from "@transifex/react";
+import { ChevronRight } from "lucide-react";
 import { useLoaderData } from "react-router";
 import CategoryIcon from "~/components/Icon";
 import OSMTag from "~/components/OSMTag";
@@ -43,90 +44,104 @@ export default function FaqData() {
         className="[&_h2]:first:mt-0"
       />
 
-      <h2>
-        <T _str="Tags used for categories" />
-      </h2>
+      <details className="group mb-8 border rounded-lg p-4 ">
+        <summary className="cursor-pointer font-bold text-lg list-none flex items-center gap-2">
+          <ChevronRight className="size-5 shrink-0 group-open:rotate-90 transition-transform " />
+          <T _str="Tags used for categories" />
+        </summary>
 
-      <Table className="not-prose">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-1/3">
-              <T _str="Top-level Category" />
-            </TableHead>
-            <TableHead className="w-1/3">
-              <T _str="Sub Category" />
-            </TableHead>
-            <TableHead className="w-1/3">
-              <T _str="Relevant OSM Tags" />
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.topLevelCategories.map((category) => {
-            return category.subCategories.map((subCategory, index) => (
-              <TableRow key={subCategory.id}>
-                <TableCell className="align-top py-3">
-                  {index === 0 && (
-                    <span className="inline-flex items-center gap-2 underline font-medium">
-                      <CategoryIcon id={category.id} aria-hidden size={20} />
-                      <span>{category.name}</span>
-                    </span>
-                  )}
-                </TableCell>
-                <TableCell className="align-top py-3 font-medium">
-                  {subCategory.name}
-                </TableCell>
-                <TableCell className="align-top py-3">
-                  <ul className="space-y-2">
-                    {subCategory.osmTags.map((tag) => (
-                      <li key={JSON.stringify(tag)}>
-                        <OSMTag tag={tag} />
-                      </li>
-                    ))}
-                  </ul>
-                </TableCell>
+        <div className="mt-4 overflow-x-auto">
+          <Table className="not-prose">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-1/3">
+                  <T _str="Top-level Category" />
+                </TableHead>
+                <TableHead className="w-1/3">
+                  <T _str="Sub Category" />
+                </TableHead>
+                <TableHead className="w-1/3">
+                  <T _str="Relevant OSM Tags" />
+                </TableHead>
               </TableRow>
-            ));
-          })}
-        </TableBody>
-      </Table>
+            </TableHeader>
+            <TableBody>
+              {data.topLevelCategories.map((category) => {
+                return category.subCategories.map((subCategory, index) => (
+                  <TableRow key={subCategory.id}>
+                    <TableCell className="align-top py-3">
+                      {index === 0 && (
+                        <span className="inline-flex items-center gap-2 underline font-medium">
+                          <CategoryIcon
+                            id={category.id}
+                            aria-hidden
+                            size={20}
+                          />
+                          <span>{category.name}</span>
+                        </span>
+                      )}
+                    </TableCell>
+                    <TableCell className="align-top py-3 font-medium">
+                      {subCategory.name}
+                    </TableCell>
+                    <TableCell className="align-top py-3">
+                      <ul className="space-y-2">
+                        {subCategory.osmTags.map((tag) => (
+                          <li key={JSON.stringify(tag)}>
+                            <OSMTag tag={tag} />
+                          </li>
+                        ))}
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                ));
+              })}
+            </TableBody>
+          </Table>
+        </div>
+      </details>
 
-      <h2>
-        <T _str="Tags used for criteria" />
-      </h2>
+      <details className="group mb-8 border rounded-lg p-4 ">
+        <summary className="cursor-pointer font-bold text-lg list-none flex items-center gap-2">
+          <ChevronRight className="size-5 shrink-0 group-open:rotate-90 transition-transform " />
+          <T _str="Tags used for criteria" />
+        </summary>
 
-      <Table className="not-prose">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-2/3">
-              <T _str="Criterion" />
-            </TableHead>
-            <TableHead className="w-1/3">
-              <T _str="Relevant OSM Tags" />
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.criteria.map((criterion) => {
-            return (
-              <TableRow key={criterion.id}>
-                <TableCell className="align-top py-3 font-medium">
-                  {criterion.name}
-                </TableCell>
-                <TableCell className="align-top py-3">
-                  <ul className="space-y-2">
-                    {criterion.osmTags.map((tag) => (
-                      <li key={JSON.stringify(tag)}>
-                        <OSMTag tag={tag} />
-                      </li>
-                    ))}
-                  </ul>
-                </TableCell>
+        <div className="mt-4 overflow-x-auto">
+          <Table className="not-prose">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-2/3">
+                  <T _str="Criterion" />
+                </TableHead>
+                <TableHead className="w-1/3">
+                  <T _str="Relevant OSM Tags" />
+                </TableHead>
               </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+            </TableHeader>
+            <TableBody>
+              {data.criteria.map((criterion) => {
+                return (
+                  <TableRow key={criterion.id}>
+                    <TableCell className="align-top py-3 font-medium">
+                      {criterion.name}
+                    </TableCell>
+                    <TableCell className="align-top py-3">
+                      <ul className="space-y-2">
+                        {criterion.osmTags.map((tag) => (
+                          <li key={JSON.stringify(tag)}>
+                            <OSMTag tag={tag} />
+                          </li>
+                        ))}
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
+      </details>
     </article>
   );
 }

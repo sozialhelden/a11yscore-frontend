@@ -1,28 +1,34 @@
-## How is it calculated?
+## How is the a11y-Score calculated?
 
-The a11y score is calculated using open data based on [OpenStreetMap (OSM)](https://www.openstreetmap.org/). OSM is a collaborative map of the world created and maintained by volunteers.
+The a11y-Score is based on open data from [OpenStreetMap](https://www.openstreetmap.org) (OSM for short). OSM is a map created and maintained by volunteers all over the world.
 
-### Categorization of the physical world
+## Categories of the physical world
 
-In order to evaluate the accessibility of the physical world, it is divided into many different categories, which are in turn divided into further subcategories. For example, there is the category “Transport,” which is further divided into “Bus stops” or “Train stations.”
+To evaluate the accessibility of the physical world, it is divided into many different categories, which are in turn divided into further subcategories. For example, the main category "Public Transport" includes several subcategories such as "Bus Platforms" and "Train Stations".
 
-### Accessibility criteria
+## Accessibility criteria
 
-We define a list of criteria for each subcategory, e.g., “train station.” If a location meets all criteria, it is considered accessible for the a11y-Score. For train stations, for example, we include wheelchair accessibility. This means that every area of the building is accessible at ground level. Floor guidance systems, real-time departure boards, and audio announcements are also included, along with many other criteria.
+We define a list of criteria for each subcategory. Does a place meet all the criteria? Then it is considered accessible for the a11y-Score. For the "Train Stations" subcategory, for example, we include whether every area in the building is accessible to people in wheelchairs. Tactile paving systems, real-time departure boards, acoustic announcements, and many other criteria are also considered.
 
-### Weighting of criteria
+For each location and each criterion, we assign points between 0 and 100. Here is an example for the ``Mobility`` criterion:
+- A place is fully wheelchair accessible: 100 points
+- A place is partially wheelchair accessible: 50 points
+- A place is not wheelchair accessible: 10 points
+- A place has no information about wheelchair accessibility: 0 points
 
-Since the criteria have varying degrees of influence on actual accessibility, they are weighted. For example, the wheelchair accessibility of a train station could be weighted differently than the presence of grab bars on both sides of a toilet.
+## Weighting of the criteria
 
-### Data quality
+Since the criteria have different levels of influence on actual accessibility, we apply weights to them. For example, in the case of train stations, whether the building is accessible to people in wheelchairs at all might carry more weight than whether there are grab rails on both sides in the station toilets.
 
-Data completeness in OSM can vary locally, as the map is maintained by volunteers. Therefore, the a11y-Score takes data quality into account. Criteria with incomplete data are weighted lower, if possible.
+## Data quality
 
-### Calculation of the a11y-Score
+The amount of accessibility data available in OSM varies from place to place, as the map is maintained by volunteers. Therefore, the rating algorithm also incorporates data quality. Criteria with poor data availability are weighted lower than those with good data availability.
 
-Based on the weighted criteria and data quality, the system ultimately calculates an a11y score for each category. These category scores are weighted again and then averaged to obtain an overall score for a region.
+## Calculation of the a11y-Score
+
+Using the weighted criteria and data quality, the program calculates a score for each subcategory. These category scores are weighted again and averaged to obtain a score for the parent category. The overall a11y-Score for the region is then calculated from the weighted and averaged scores of the parent categories.
 
 ### Further information
 
 * [Overview of the data used](/faqs/what-data-is-being-used)
-* [Technical documentation of the algorithm](https://github.com/sozialhelden/a11yscore/blob/main/docs/index.md)
+* [Technical documentation of the algorithm (English)](https://github.com/sozialhelden/a11yscore/blob/main/docs/index.md)

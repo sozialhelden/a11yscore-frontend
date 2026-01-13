@@ -24,13 +24,18 @@ export default function FaqLinks(props: ComponentProps<"div">) {
             </FaqLink>
           </li>
           <li>
+            <FaqLink to="/faqs/what-data-is-being-used">
+              <T _str="What data is being used?" />
+            </FaqLink>
+          </li>
+          <li>
             <FaqLink to="/faqs/how-to-interpret-the-score">
               <T _str="How to interpret the score?" />
             </FaqLink>
           </li>
           <li>
-            <FaqLink to="/faqs/what-data-is-being-used">
-              <T _str="What data is being used?" />
+            <FaqLink to="/faqs/available-regions">
+              <T _str="What regions are available?" />
             </FaqLink>
           </li>
           <li>

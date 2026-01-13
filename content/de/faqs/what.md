@@ -1,26 +1,26 @@
 ## Was ist der a11y-Score?
 
-Ob in der Stadt oder auf dem Land: Gebäude und Wege sind für Millionen Menschen oft voller Hindernisse. Dies schränkt ihre Alltagsmobilität und Lebensqualität stark ein.
+Ob in der Stadt oder auf dem Land: Gebäude und Wege sind für Millionen Menschen voller Hindernisse. Dies schränkt ihren Alltag und ihre Lebensqualität stark ein. Deswegen sind Städte und Kommunen in Deutschland schon lange gesetzlich dazu verpflichtet, Barrierefreiheit und Inklusion herzustellen.
 
-Ein großes Problem, das klugen Entscheidungen für Verbesserungen im Wege steht: Häufig fehlt es an einem umfassenden Überblick und vergleichbaren Daten zur tatsächlichen Barrierefreiheit.
+Wenn man kluge Entscheidungen und Maßnahmen treffen möchte, um die Situation zu verbessern, stößt man aber häufig auf ein Problem: Es gibt gar keinen Überblick oder aussagekräftige Daten, um festzustellen, wie gut oder schlecht die Barrierefreiheit wirklich ist.
 
-### Ein weltweiter Datenlayer für Barrierefreiheit
+### Barrierefreiheit messen, bewerten und vergleichen
 
-Das Projekt a11y-Score zielt darauf ab, die Barrierefreiheit der physischen Welt messbar und vergleichbar zu machen. Er ist dabei mehr als nur eine Datenauswertung. Es ist unser Ziel, erstmals einen verlässlichen Indikator zu schaffen, der Regionen hinsichtlich ihrer Barrierefreiheit weltweit vergleichbar macht, ein Datenlayer für Barrierefreiheit.
+Genau hier setzt unser Entwicklungsprojekt an: Der a11y-Score ist ein Programm, das anhand von festgelegten Merkmalen und Kategorien die tatsächliche Barrierefreiheit in einer Region, Stadt oder Kommune misst und bewertet. Und damit zum ersten Mal auch eine Möglichkeit schafft, die Barrierefreiheit verschiedener Regionen zu vergleichen.
 
-Dieses Vorhaben wird durch das Bundesministerium für Verkehr (BMV) im Rahmen der [mFUND-Initiative gefördert](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html). Dies unterstreicht die bundesweite Relevanz und den strategischen Wert unseres Ansatzes, die digitale Transformation im Bereich Mobilität voranzutreiben und die Teilhabe zu verbessern.
+Der Name a11y-Score beschreibt übrigens genau das: “a11y" ist eine Kurzform für "accessibility" – also Barrierefreiheit. Die "11" steht für die elf Buchstaben zwischen dem "a" und dem "y". Zusammen mit Score – Englisch für Punktzahl, Note oder Bewertung – heißt es also nichts anderes als “Bewertung der Barrierefreiheit”.
 
-_(Falls Sie sich fragen, was "a11y" bedeutet: das ist die Kurzform für "accessibility". Die "11" dient dabei als Platzhalter für elf Buchstaben zwischen dem "a" und dem "y" – ein kleiner "Nerd-Fakt" aus der Tech-Welt.)_
+Dieses Vorhaben wird durch das Bundesministerium für Verkehr (BMV) im Rahmen der [mFUND-Initiative gefördert](https://www.bmv.de/SharedDocs/DE/Artikel/DG/mfund-projekte/a11y.html). Das macht deutlich, wie relevant unser Ansatz bundesweit ist – für eine moderne, digitale Mobilität und mehr Teilhabe.
 
-### Was das Projekt erreichen will
+### Was der a11y-Score bietet
 
 #### Sichtbarkeit und Vergleichbarkeit
 
-Der a11y-Score liefert einen einheitlichen Wert, der die Barrierefreiheit in Stadtteilen, Landkreisen oder ganzen Regionen wiederspiegelt. 
+Der a11y-Score liefert einen einheitlichen Wert, der die Barrierefreiheit in Stadtteilen, Landkreisen oder ganzen Regionen widerspiegelt. Dabei ist er nicht auf Deutschland begrenzt, sondern kann perspektivisch auch weltweit genutzt werden.
 
 #### Grundlage für Entscheidungen
 
-Der a11y-Score kann als Key Performance Indicator (KPI) dienen, um den Status Quo zu bewerten, Fortschritte über die Zeit zu messen und gezielte Handlungsempfehlungen abzuleiten (z.B. für bauliche Maßnahmen, Datenerhebungen, Kampagnen)
+Der a11y-Score kann als Key Performance Indicator (KPI) dienen, also als die wesentliche Messgröße für Barrierefreiheit: Man kann damit den aktuellen Stand in der Region feststellen, gezielte Handlungsempfehlungen ableiten (z.B. für Baumaßnahmen, Datenerhebungen, Öffentlichkeitskampagnen) sowie Fortschritte über die Zeit messen und dokumentieren.
 
 #### Echte Inklusion
 

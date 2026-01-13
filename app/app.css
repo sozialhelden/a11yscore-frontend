@@ -23,6 +23,15 @@
 /* Add plugins */
 @plugin "@tailwindcss/typography";
 
+@layer base {
+  .prose code::before {
+    content: "" !important;
+  }
+  .prose code::after {
+    content: "" !important;
+  }
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
