@@ -78,7 +78,7 @@ export default function App() {
           <BreakpointContextProvider>
             <TooltipProvider>
               {isLoading ? (
-                <div className="fixed inset-0 bg-white flex items-center justify-center z-[2000]">
+                <div className="fixed inset-0 bg-white flex items-center justify-center z-2000">
                   <LoaderCircle size={30} className="animate animate-spin" />
                 </div>
               ) : (
@@ -105,6 +105,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
+  } else if (error instanceof Response && error.status === 404) {
+    message = "404";
+    details = "The requested page could not be found.";
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
