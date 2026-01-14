@@ -31,16 +31,14 @@ export default function TopLevelCategoryListItem({
           className="after:content-[''] after:absolute after:inset-0"
           preventScrollReset={true}
         >
-          <h4
-            className={`leading-none flex gap-3 items-center text-lg ${planned ? "text-gray-400" : ""}`}
-          >
+          <h4 className={`leading-none flex gap-3 items-center text-lg `}>
             <CategoryIcon id={id} aria-hidden size={24} />
             {name}
           </h4>
         </NavLink>
         {!planned && <ScoreBox className="relative z-20" score={score} />}
       </div>
-      <div className={`text-md ${planned ? "text-gray-400" : "text-gray-600"}`}>
+      <div className={`text-md `}>
         {planned ? <T _str="Coming soon!" /> : interpretation}
       </div>
     </Card>
