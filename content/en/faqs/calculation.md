@@ -10,7 +10,7 @@ To evaluate the accessibility of the physical world, it is divided into many dif
 
 We define a list of criteria for each subcategory. Does a place meet all the criteria? Then it is considered accessible for the a11y-Score. For the "Train Stations" subcategory, for example, we include whether every area in the building is accessible to people in wheelchairs. Tactile paving systems, real-time departure boards, acoustic announcements, and many other criteria are also considered.
 
-For each location and each criterion, we assign points between 0 and 100. Here is an example for the ``Mobility`` criterion:
+For each location and each criterion, we assign points between 0 and 100. Here is an example for the `Mobility` criterion:
 - A place is fully wheelchair accessible: 100 points
 - A place is partially wheelchair accessible: 50 points
 - A place is not wheelchair accessible: 10 points
@@ -31,4 +31,4 @@ Using the weighted criteria and data quality, the program calculates a score for
 ### Further information
 
 * [Overview of the data used](/faqs/what-data-is-being-used)
-* [Technical documentation of the algorithm (English)](https://github.com/sozialhelden/a11yscore/blob/main/docs/index.md)
+* [Technical documentation of the algorithm](https://github.com/sozialhelden/a11yscore/blob/main/docs/index.md)

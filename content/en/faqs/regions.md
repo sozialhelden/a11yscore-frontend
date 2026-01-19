@@ -1,6 +1,6 @@
 ## What regions are available?
 
-In the current version of the a11y-Score, accessibility can be calculated for the 16 federal states as well as 418 urban and rural districts in Germany. These regions are based on the so-called [administrative boundaries](https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative) from OpenStreetMap.
+In the current version of the a11y-Score, accessibility can be calculated for the 16 federal states as well as 418 urban and rural districts in Germany. These regions are based on the so-called [administrative boundaries](https://wiki.openstreetmap.org/wiki/Tag:boundary%3Dadministrative) from OpenStreetMap (OSM).
 
 ### Administrative Levels
 Since every country has its own administrative structure (e.g., federal states in Germany, cantons in Switzerland, or departments in France), OSM uses a numerical scale from 2 to 10 to represent this hierarchy.
