@@ -18,13 +18,16 @@ import {
   Eye,
   GlassWater,
   Hamburger,
+  Hand,
   HandHeart,
   HeartPlus,
   Hospital,
   House,
   HouseHeart,
   IceCreamCone,
+  LampCeiling,
   Landmark,
+  Logs,
   Martini,
   MegaphoneOff,
   MessageCircleHeart,
@@ -33,6 +36,8 @@ import {
   Ship,
   Shirt,
   Smartphone,
+  SmartphoneNfc,
+  Sofa,
   Soup,
   Speech,
   Stethoscope,
@@ -42,6 +47,7 @@ import {
   TrainFront,
   TrainFrontTunnel,
   TramFront,
+  Umbrella,
   Users,
   Utensils,
 } from "lucide-react";
@@ -107,17 +113,31 @@ export default function Icon({ id, size }: { id: string; size: number }) {
     "charity-shops": HouseHeart,
     "soup-kitchens-food-banks": Soup,
     // criteria
+    //// wheelchair
     "is-wheelchair-accessible": Accessibility,
     "has-wheelchair-accessible-toilet": Toilet,
+    //// climate
     "smoking-is-prohibited": CigaretteOff,
     "has-air-conditioning": AirVent,
+    //// toilet
     "has-toilet": Toilet,
-    "has-menu-on-website": Smartphone,
+    //// blind
     "is-accessible-to-visually-impaired": Eye,
+    "has-tactile-paving": Logs,
+    "has-information-board-with-speech-output": SmartphoneNfc,
+    "has-tactile-writing": Hand,
+    //// environment
     "has-quiet-hours": MegaphoneOff,
+    //// deaf
     "is-accessible-to-hearing-impaired": Ear,
     "reservation-via-website": Smartphone,
+    //// general
     "has-drinking-straws": CupSoda,
+    "is-lit": LampCeiling,
+    "has-shelter": Umbrella,
+    "has-bench": Sofa,
+    "has-website": Smartphone,
+    "has-menu-on-website": Smartphone,
   };
 
   const Icon = icons[id] || Circle;
