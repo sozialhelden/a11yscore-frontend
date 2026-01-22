@@ -1,5 +1,5 @@
 import { T } from "@transifex/react";
-import { Outlet, useOutletContext, useParams } from "react-router";
+import { Outlet, useOutletContext } from "react-router";
 import Card from "~/components/Card";
 import Icon from "~/components/Icon";
 import SubCategoryListItem from "~/routes/score/components/list/SubCategoryListItem";
@@ -11,16 +11,10 @@ import { sortByScore } from "~/utils/score";
 export default function TopLevelCategory() {
   const { getTopLevelCategoryId, isTopLevelCategoryActive } = useScoreRoutes();
   const { score } = useOutletContext<ScoreResults>();
-  const { subCategory } = useParams();
 
   const topLevelCategory = score.toplevelCategories.find(
     ({ id }) => id === getTopLevelCategoryId(),
   );
-
-  // suppressing any child routes for planned categories
-  if (topLevelCategory?.planned && subCategory) {
-    throw new Response("Not Found", { status: 404 });
-  }
 
   const isActive = isTopLevelCategoryActive();
 
@@ -51,7 +45,7 @@ export default function TopLevelCategory() {
           </p>
           <ul className="-mx-6">
             {topLevelCategory.subCategories
-              ?.sort(sortByScore)
+              .sort(sortByScore)
               .map((subCategory) => (
                 <li key={subCategory.id}>
                   <SubCategoryListItem

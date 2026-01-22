@@ -13,7 +13,12 @@ import { decodeOsmIdHash } from "~/utils/osmIds";
 import type { Route } from "./+types/index";
 
 export async function loader({
-  params: { adminArea },
+  params: {
+    adminArea,
+    topLevelCategory: topLevelCategoryId,
+    subCategory: subCategoryId,
+    criterion: criterionId,
+  },
   context,
 }: Route.LoaderArgs) {
   const [hash, ...slugParts] = adminArea.split("-");
@@ -32,6 +37,24 @@ export async function loader({
   if (slug !== results.adminArea.slug) {
     const correctSlug = results.adminArea.slug;
     throw redirect(`/scores/${hash}-${correctSlug}`, 301);
+  }
+
+  const topLevelCategory = results.score.toplevelCategories.find(
+    ({ id }) => id === topLevelCategoryId,
+  );
+  const subCategory = topLevelCategory?.subCategories.find(
+    ({ id }) => id === subCategoryId,
+  );
+  const criterion = subCategory?.topics
+    .flatMap((topic) => topic.criteria)
+    .find(({ id }) => id === criterionId);
+
+  if (
+    (topLevelCategoryId && !topLevelCategory) ||
+    (subCategoryId && !subCategory) ||
+    (criterionId && !criterion)
+  ) {
+    throw new Response("Not Found", { status: 404 });
   }
 
   return results;
