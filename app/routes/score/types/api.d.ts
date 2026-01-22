@@ -38,7 +38,7 @@ export type TopLevelCategoryScoreResult = BaseScoreResult & {
   interpretation: string;
   description: string;
   planned: boolean;
-  subCategories?: SubCategoryScoreResult[];
+  subCategories: SubCategoryScoreResult[];
 };
 
 export type ScoreResults = {
