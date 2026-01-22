@@ -31,7 +31,7 @@ export default function TopLevelCategoryListItem({
           className="after:content-[''] after:absolute after:inset-0"
           preventScrollReset={true}
         >
-          <h4 className={`leading-none flex gap-3 items-center text-lg `}>
+          <h4 className="leading-none flex gap-3 items-center text-lg">
             <CategoryIcon id={id} aria-hidden size={24} />
             {name}
           </h4>
