@@ -47,6 +47,8 @@ export default function ScorePage() {
     return 2;
   }, [subCategory, criterion]);
 
+  const verticalScrollContainerRef = useRef<HTMLDivElement>(null);
+
   const scrollAreaRef = useRef<ScoreDetailsScrollAreaRef>(null);
   useEffect(() => {
     if (criterion) {
@@ -60,10 +62,22 @@ export default function ScorePage() {
     }
   }, [subCategory, criterion, topLevelCategory]);
 
+  const verticalScrollIntoView = () => {
+    // waiting for the child resize to complete before scrolling
+    setTimeout(() => {
+      if (!verticalScrollContainerRef.current) return;
+
+      verticalScrollContainerRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 200);
+  };
+
   return (
     <div>
       <ScoreDetailHeaderImage image={adminArea.image} />
-      <Main size="wide">
+      <Main size="wide" onClick={verticalScrollIntoView}>
         <div className="space-y-8 md:space-y-12 pb-24">
           <ScoreDetailHeader
             name={adminArea.name}
@@ -71,21 +85,26 @@ export default function ScorePage() {
             lastUpdated={score.createdAt}
             className="-mt-8 md:-mt-32"
           />
-          <ScoreDetailScrollArea columnCount={columnCount} ref={scrollAreaRef}>
-            <div className={`space-y-4`}>
-              {score.toplevelCategories
-                .sort((a, b) => {
-                  return (b.score.score || 0) - (a.score.score || 0);
-                })
-                .map((topLevelCategory) => (
-                  <TopLevelCategoryListItem
-                    key={topLevelCategory.id}
-                    topLevelCategory={topLevelCategory}
-                  />
-                ))}
-            </div>
-            <Outlet context={{ score }} />
-          </ScoreDetailScrollArea>
+          <div ref={verticalScrollContainerRef}>
+            <ScoreDetailScrollArea
+              columnCount={columnCount}
+              ref={scrollAreaRef}
+            >
+              <div className={`space-y-4`}>
+                {score.toplevelCategories
+                  .sort((a, b) => {
+                    return (b.score.score || 0) - (a.score.score || 0);
+                  })
+                  .map((topLevelCategory) => (
+                    <TopLevelCategoryListItem
+                      key={topLevelCategory.id}
+                      topLevelCategory={topLevelCategory}
+                    />
+                  ))}
+              </div>
+              <Outlet context={{ score }} />
+            </ScoreDetailScrollArea>
+          </div>
         </div>
       </Main>
     </div>
