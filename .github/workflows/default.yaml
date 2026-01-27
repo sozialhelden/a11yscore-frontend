@@ -27,13 +27,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run test:unit
-      - uses: sozialhelden/get-commit-status-target-url@v1
-        id: get_deployment_url
-        with:
-          github-token: ${{ secrets.ELEVATED_GITHUB_TOKEN }}
-      - env:
-          NITRO_TEST_BASE_URL: ${{ steps.get_deployment_url.outputs.target-url }}
-        run: npm run test:e2e
+      - run: npm run test:e2e
 
 
   build:
