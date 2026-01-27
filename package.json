@@ -25,7 +25,7 @@
     "@transifex/native": "7.1.4",
     "@transifex/react": "7.1.4",
     "dompurify": "3.3.0",
-    "hashids": "^2.3.0",
+    "hashids": "2.3.0",
     "isbot": "5.1.32",
     "lucide-react": "0.553.0",
     "luxon": "3.7.2",
