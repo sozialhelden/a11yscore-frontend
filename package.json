@@ -23,7 +23,7 @@
     "@sozialhelden/core": "2.3.0",
     "@sozialhelden/ui": "1.8.2",
     "@transifex/native": "7.1.4",
-    "@transifex/react": "7.1.4",
+    "@transifex/react": "7.1.5",
     "dompurify": "3.3.0",
     "hashids": "2.3.0",
     "isbot": "5.1.32",
