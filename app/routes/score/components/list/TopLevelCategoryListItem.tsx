@@ -1,4 +1,5 @@
 import { T } from "@transifex/react";
+import { Loader } from "lucide-react";
 import type { ComponentProps } from "react";
 import { NavLink } from "react-router";
 import Card from "~/components/Card";
@@ -31,10 +32,19 @@ export default function TopLevelCategoryListItem({
           className="after:content-[''] after:absolute after:inset-0"
           preventScrollReset={true}
         >
-          <h4 className="leading-none flex gap-3 items-center text-lg">
-            <CategoryIcon id={id} aria-hidden size={24} />
-            {name}
-          </h4>
+          {({ isPending }) => (
+            <>
+              {isPending && (
+                <div className="absolute inset-0 flex justify-center items-center bg-white/80">
+                  <Loader className="animate animate-spin" />
+                </div>
+              )}
+              <h4 className="leading-none flex gap-3 items-center text-lg">
+                <CategoryIcon id={id} aria-hidden size={24} />
+                {name}
+              </h4>
+            </>
+          )}
         </NavLink>
         {!planned && <ScoreBox className="relative z-20" score={score} />}
       </div>
