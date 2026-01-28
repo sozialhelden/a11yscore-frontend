@@ -22,7 +22,7 @@
     "@react-router/serve": "7.9.5",
     "@sozialhelden/core": "2.3.0",
     "@sozialhelden/ui": "1.8.2",
-    "@transifex/native": "7.1.4",
+    "@transifex/native": "7.1.5",
     "@transifex/react": "7.1.4",
     "dompurify": "3.3.0",
     "hashids": "2.3.0",
