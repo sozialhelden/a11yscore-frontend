@@ -85,12 +85,15 @@ export default function Home() {
           <T _str="The a11y-Score rates the accessibility of your state, municipality or city. Start now and choose a region to see the score." />
         </p>
 
-        <form onSubmit={onSubmit} className="flex flex-col md:flex-row gap-6">
+        <form
+          onSubmitCapture={onSubmit}
+          className="flex flex-col md:flex-row gap-6"
+        >
           <div className="flex-1">
             <Combobox
               items={items}
               value={selectedAdminArea}
-              onValueChange={(value, eventDetails) => {
+              onValueChange={(value) => {
                 // somehow the combobox fires a second event which clears the selection by setting the value
                 // to null. this is to prevent the input field to be cleared:
                 if (value == null) return;
