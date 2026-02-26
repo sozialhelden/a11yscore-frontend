@@ -62,11 +62,18 @@ export default function Home() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
 
-  const [selectedAdminArea, setSelectedAdminArea] = useState<AdminArea>();
-
   const items = useMemo(() => {
     return adminAreas.slice().sort((a, b) => a.name.localeCompare(b.name));
   }, [adminAreas]);
+
+  const [selectedAdminAreaHash, setSelectedAdminAreaHash] = useState<
+    string | null
+  >(null);
+
+  const selectedAdminArea = useMemo(() => {
+    if (!selectedAdminAreaHash) return undefined;
+    return items.find((a) => a.hash === selectedAdminAreaHash);
+  }, [items, selectedAdminAreaHash]);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -94,10 +101,7 @@ export default function Home() {
               items={items}
               value={selectedAdminArea}
               onValueChange={(value) => {
-                // somehow the combobox fires a second event which clears the selection by setting the value
-                // to null. this is to prevent the input field to be cleared:
-                if (value == null) return;
-                setSelectedAdminArea(value);
+                setSelectedAdminAreaHash(value?.hash ?? null);
               }}
               itemToStringLabel={(adminArea: AdminArea) => adminArea.name}
             >
