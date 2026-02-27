@@ -1,22 +1,17 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Button,
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
 } from "@sozialhelden/ui";
 import { T, useT } from "@transifex/react";
 import { Loader } from "lucide-react";
-import { useForm } from "react-hook-form";
+import type React from "react";
+import { useMemo, useState } from "react";
 import { useLoaderData, useNavigate, useNavigation } from "react-router";
-import { z } from "zod";
 import FaqLinks from "~/components/FaqLinks";
 import Main from "~/components/Main";
 import { apiFetch } from "~/utils/api";
@@ -67,25 +62,23 @@ export default function Home() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
 
-  const formSchema = z.object({
-    region: z.enum(
-      adminAreas.map(({ slug, hash }) => `${hash}-${slug}`),
-      t("Please select a valid region"),
-    ),
-  });
+  const items = useMemo(() => {
+    return adminAreas.slice().sort((a, b) => a.name.localeCompare(b.name));
+  }, [adminAreas]);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      region: "",
-    },
-  });
+  const [selectedAdminAreaHash, setSelectedAdminAreaHash] = useState<
+    string | null
+  >(null);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    if (isNavigating) {
-      return;
-    }
-    navigate(`/scores/${values.region.trim()}`);
+  const selectedAdminArea = useMemo(() => {
+    if (!selectedAdminAreaHash) return undefined;
+    return items.find((a) => a.hash === selectedAdminAreaHash);
+  }, [items, selectedAdminAreaHash]);
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (isNavigating || !selectedAdminArea) return;
+    navigate(`/scores/${selectedAdminArea.hash}-${selectedAdminArea.slug}`);
   }
 
   return (
@@ -96,53 +89,47 @@ export default function Home() {
         </h2>
 
         <p className="text-gray-500">
-          <T _str="The a11y-Score rates the accessibility of your state, muncipality or city. Start now and choose a region to see the score." />
+          <T _str="The a11y-Score rates the accessibility of your state, municipality or city. Start now and choose a region to see the score." />
         </p>
 
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col md:flex-row gap-6"
-          >
-            <FormField
-              control={form.control}
-              name="region"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder={t("Select a region")} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {adminAreas
-                          .sort((a, b) => a.name.localeCompare(b.name))
-                          .map(({ slug, hash, name }) => (
-                            <SelectItem key={hash} value={`${hash}-${slug}`}>
-                              {name}
-                            </SelectItem>
-                          ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <form
+          onSubmitCapture={onSubmit}
+          className="flex flex-col md:flex-row gap-6"
+        >
+          <div className="flex-1">
+            <Combobox
+              items={items}
+              value={selectedAdminArea}
+              onValueChange={(value) => {
+                setSelectedAdminAreaHash(value?.hash ?? null);
+              }}
+              itemToStringLabel={(adminArea: AdminArea) => adminArea.name}
+            >
+              <ComboboxInput
+                placeholder={t("Select a region or start typing...")}
+              />
+              <ComboboxContent>
+                <ComboboxEmpty>{t("No items found.")}</ComboboxEmpty>
+                <ComboboxList>
+                  {(adminArea: AdminArea) => (
+                    <ComboboxItem key={adminArea.hash} value={adminArea}>
+                      {adminArea.name}
+                    </ComboboxItem>
+                  )}
+                </ComboboxList>
+              </ComboboxContent>
+            </Combobox>
+          </div>
 
-            <Button type="submit" disabled={isNavigating}>
-              <T _str="Calculate a11y-Score" />
-              {isNavigating && (
-                <div className="">
-                  <Loader className="animate animate-spin" />
-                </div>
-              )}
-            </Button>
-          </form>
-        </Form>
+          <Button type="submit" disabled={isNavigating || !selectedAdminArea}>
+            <T _str="Calculate a11y-Score" />
+            {isNavigating && (
+              <div className="">
+                <Loader className="animate animate-spin" />
+              </div>
+            )}
+          </Button>
+        </form>
 
         <FaqLinks className="mt-24" />
       </div>
