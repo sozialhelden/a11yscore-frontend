@@ -1,6 +1,15 @@
 ## Feedback geben
 
-Sie haben Feedback zu unserer Website, unseren Inhalten oder unseren Diensten? Wir würden wir uns freuen, von Ihnen zu hören. Wenden Sie sich bitte per E-Mail an: [info@sozialhelden.de](mailto:info@sozialhelden.de)
+### Nehmen Sie an unserer Umfrage teil!
+ 
+Das Ausfüllen dauert nur wenige Minuten, ist anonym und hilft uns, den A11y-Score zu verbessern und das Projekt zukunftsfähig zu gestalten.     
+
+[Jetzt teilnehmen →](https://forms.gle/6NXn5kDiQ3ucVNPJ9)
+  
+
+### Allgemeines Feedback
+Sie haben weiteres Feedback zu unserer Website, unseren Inhalten oder unseren Diensten?
+Für allgemeines Feedback, wenden Sie sich bitte per E-Mail an: [info@sozialhelden.de](mailto:info@sozialhelden.de)
 
 ### Partner\*in werden
 
