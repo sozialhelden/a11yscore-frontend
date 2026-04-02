@@ -16,6 +16,11 @@ import type { Route } from "./+types/root";
 
 import "./app.css";
 import { TooltipProvider } from "@sozialhelden/ui";
+
+export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+  { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
+];
 import { BreakpointContextProvider } from "~/hooks/useBreakpoints";
 import { I18nContextProvider } from "~/hooks/useI18n";
 import { devOverwritesMiddleware } from "~/middleware/dev-overwrites";

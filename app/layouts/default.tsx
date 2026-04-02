@@ -1,6 +1,7 @@
 import { T, useT } from "@transifex/react";
 import { Star } from "lucide-react";
 import { NavLink, Outlet } from "react-router";
+import A11yscoreLogo from "~/components/a11yscore-logo";
 import FooterLink from "~/components/FooterLink";
 import { useI18n } from "~/hooks/useI18n";
 
@@ -14,7 +15,7 @@ export default function Layout() {
       <header className="border-b border-gray-200 px-4 md:px-10 flex items-center h-20 bg-white">
         <NavLink to="/" className="hover:text-primary">
           <h1 className="text-xl font-bold flex gap-4 items-center relative">
-            <Star />
+            <A11yscoreLogo />
             <T _str="a11y-Score" />
             <span className="bg-gray-200 text-gray-900 leading-2.5 text-[10px] font-bold uppercase tracking-widest pl-1 pr-0.5 pt-0.5 pb-0.25 rounded absolute top-full right-0">
               <T _str="beta" />
