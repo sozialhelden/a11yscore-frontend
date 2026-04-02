@@ -14,10 +14,10 @@ export default function Layout() {
     <div className="min-h-screen grid grid-cols-1 grid-rows-[auto_1fr_auto] bg-gray-100">
       <header className="border-b border-gray-200 px-4 md:px-10 flex items-center h-20 bg-white">
         <NavLink to="/" className="hover:text-primary">
-          <h1 className="text-xl font-bold flex gap-4 items-center relative">
-            <A11yscoreLogo />
+          <h1 className="text-xl font-bold flex gap-4 items-center relative whitespace-nowrap">
+            <A11yscoreLogo className="h-10 w-10 shrink-0" />
             <T _str="a11y-Score" />
-            <span className="bg-gray-200 text-gray-900 leading-2.5 text-[10px] font-bold uppercase tracking-widest pl-1 pr-0.5 pt-0.5 pb-0.25 rounded absolute top-full right-0">
+            <span className="bg-gray-200 text-gray-900 leading-2.5 text-[10px] font-bold uppercase tracking-widest pl-1 pr-0.5 pt-0.5 pb-0.25 rounded absolute -bottom-1 right-0">
               <T _str="beta" />
             </span>
           </h1>
