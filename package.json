@@ -41,7 +41,7 @@
     "@tailwindcss/vite": "4.2.2",
     "@transifex/cli": "7.1.5",
     "@types/luxon": "3.7.1",
-    "@types/node": "24.12.0",
+    "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "env-cmd": "11.0.0",
