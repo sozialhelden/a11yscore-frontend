@@ -1,5 +1,4 @@
 import { T, useT } from "@transifex/react";
-import { Star } from "lucide-react";
 import { NavLink, Outlet } from "react-router";
 import A11yscoreLogo from "~/components/a11yscore-logo";
 import FooterLink from "~/components/FooterLink";
