@@ -27,7 +27,7 @@
     "dompurify": "3.3.3",
     "hashids": "2.3.0",
     "isbot": "5.1.37",
-    "lucide-react": "0.577.0",
+    "lucide-react": "1.8.0",
     "luxon": "3.7.2",
     "marked": "16.4.2",
     "react": "19.2.5",
