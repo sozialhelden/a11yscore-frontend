@@ -24,7 +24,7 @@
     "@sozialhelden/ui": "1.9.5",
     "@transifex/native": "7.1.5",
     "@transifex/react": "7.1.5",
-    "dompurify": "3.3.3",
+    "dompurify": "3.4.0",
     "hashids": "2.3.0",
     "isbot": "5.1.38",
     "lucide-react": "0.577.0",
