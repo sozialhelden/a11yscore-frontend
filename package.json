@@ -38,7 +38,7 @@
     "@biomejs/biome": "2.2.7",
     "@react-router/dev": "7.15.0",
     "@tailwindcss/typography": "0.5.19",
-    "@tailwindcss/vite": "4.2.4",
+    "@tailwindcss/vite": "4.3.0",
     "@transifex/cli": "7.1.6",
     "@types/luxon": "3.7.1",
     "@types/node": "24.12.2",
@@ -46,7 +46,7 @@
     "@types/react-dom": "19.2.3",
     "env-cmd": "11.0.0",
     "husky": "9.1.7",
-    "tailwindcss": "4.2.4",
+    "tailwindcss": "4.3.0",
     "typescript": "5.9.3",
     "vite": "7.3.3",
     "vite-tsconfig-paths": "5.1.4"
