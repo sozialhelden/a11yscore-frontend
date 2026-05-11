@@ -50,6 +50,8 @@ const italianCities = new Set([
   "Napoli",
   "Firenze",
   "Milano",
+  "Lombardia",
+  "Veneto",
 ]);
 
 export async function loader({ context }: Route.LoaderArgs) {
