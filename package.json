@@ -30,8 +30,8 @@
     "lucide-react": "0.577.0",
     "luxon": "3.7.2",
     "marked": "16.4.2",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "react-router": "7.16.0"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "@transifex/cli": "7.1.6",
     "@types/luxon": "3.7.1",
     "@types/node": "24.12.4",
-    "@types/react": "19.2.15",
+    "@types/react": "19.2.16",
     "@types/react-dom": "19.2.3",
     "env-cmd": "11.0.0",
     "husky": "9.1.7",
