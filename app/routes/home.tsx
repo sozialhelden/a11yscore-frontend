@@ -132,9 +132,12 @@ export default function Home() {
               onValueChange={(value) => {
                 setSelectedAdminAreaHash(value?.hash ?? null);
               }}
-              itemToStringLabel={(adminArea: AdminArea) => adminArea.name}
+              itemToStringLabel={(adminArea: AdminArea) =>
+                `\u2066${adminArea.name}\u2069`
+              }
             >
               <ComboboxInput
+                dir="auto"
                 placeholder={t("Select a region or start typing...")}
               />
               <ComboboxContent>
