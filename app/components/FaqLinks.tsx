@@ -43,11 +43,6 @@ export default function FaqLinks(props: ComponentProps<"div">) {
               <T _str="How can I contribute?" />
             </FaqLink>
           </li>
-          <li>
-            <FaqLink to="/faqs/give-feedback">
-              <T _str="Give feedback" />
-            </FaqLink>
-          </li>
         </ul>
       </nav>
     </div>
