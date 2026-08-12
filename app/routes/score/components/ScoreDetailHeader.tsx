@@ -1,6 +1,7 @@
 import { T } from "@transifex/react";
 import { DateTime } from "luxon";
 import type { ComponentProps } from "react";
+import BidiText from "~/components/BidiText";
 import Link from "~/components/Link";
 import ScoreMeter from "~/components/score/ScoreMeter";
 import ScorePoints from "~/components/score/ScorePoints";
@@ -28,7 +29,9 @@ export default function ScoreDetailHeader({
       {...props}
     >
       <div className="flex flex-col gap-4 justify-between">
-        <h2 className="text-3xl md:text-5xl font-medium">{name}</h2>
+        <h2 className="text-3xl md:text-5xl font-medium">
+          <BidiText>{name}</BidiText>
+        </h2>
         <p className="flex flex-col gap-2">
           <span>
             <T

@@ -1,11 +1,15 @@
 import {
   Button,
   Combobox,
+  ComboboxCollection,
   ComboboxContent,
   ComboboxEmpty,
+  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
+  ComboboxLabel,
   ComboboxList,
+  ComboboxSeparator,
 } from "@sozialhelden/ui";
 import { T, useT } from "@transifex/react";
 import { Loader } from "lucide-react";
@@ -22,15 +26,24 @@ type AdminAreasResult = {
   adminAreas: {
     osmId: number;
     name: string;
+    nameEn: string | null;
     slug: string;
+    globalCapital: boolean;
   }[];
 };
 
 type AdminArea = {
   osmId: number;
   name: string;
+  nameEn: string | null;
   slug: string;
   hash: string;
+  globalCapital: boolean;
+};
+
+type AdminAreaGroup = {
+  value: string;
+  items: AdminArea[];
 };
 
 export function meta() {
@@ -49,6 +62,10 @@ export async function loader({ context }: Route.LoaderArgs) {
   return result.adminAreas.map(
     (adminArea): AdminArea => ({
       ...adminArea,
+      name:
+        adminArea.nameEn && adminArea.nameEn !== adminArea.name
+          ? `${adminArea.nameEn} (${adminArea.name})`
+          : adminArea.name,
       hash: encodeOsmId(adminArea.osmId),
     }),
   );
@@ -62,9 +79,17 @@ export default function Home() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
 
-  const items = useMemo(() => {
-    return adminAreas.slice().sort((a, b) => a.name.localeCompare(b.name));
-  }, [adminAreas]);
+  const groups = useMemo((): AdminAreaGroup[] => {
+    const sorted = adminAreas
+      .slice()
+      .sort((a, b) => a.name.localeCompare(b.name));
+    const regions = sorted.filter((a) => !a.globalCapital);
+    const capitals = sorted.filter((a) => a.globalCapital);
+    return [
+      { value: t("Regions in Germany"), items: regions },
+      { value: t("Global Capitals"), items: capitals },
+    ];
+  }, [adminAreas, t]);
 
   const [selectedAdminAreaHash, setSelectedAdminAreaHash] = useState<
     string | null
@@ -72,8 +97,12 @@ export default function Home() {
 
   const selectedAdminArea = useMemo(() => {
     if (!selectedAdminAreaHash) return undefined;
-    return items.find((a) => a.hash === selectedAdminAreaHash);
-  }, [items, selectedAdminAreaHash]);
+    for (const group of groups) {
+      const found = group.items.find((a) => a.hash === selectedAdminAreaHash);
+      if (found) return found;
+    }
+    return undefined;
+  }, [groups, selectedAdminAreaHash]);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -98,23 +127,34 @@ export default function Home() {
         >
           <div className="flex-1">
             <Combobox
-              items={items}
+              items={groups}
               value={selectedAdminArea}
               onValueChange={(value) => {
                 setSelectedAdminAreaHash(value?.hash ?? null);
               }}
-              itemToStringLabel={(adminArea: AdminArea) => adminArea.name}
+              itemToStringLabel={(adminArea: AdminArea) =>
+                `\u2066${adminArea.name}\u2069`
+              }
             >
               <ComboboxInput
+                dir="auto"
                 placeholder={t("Select a region or start typing...")}
               />
               <ComboboxContent>
                 <ComboboxEmpty>{t("No items found.")}</ComboboxEmpty>
                 <ComboboxList>
-                  {(adminArea: AdminArea) => (
-                    <ComboboxItem key={adminArea.hash} value={adminArea}>
-                      {adminArea.name}
-                    </ComboboxItem>
+                  {(group: AdminAreaGroup, index: number) => (
+                    <ComboboxGroup key={group.value} items={group.items}>
+                      <ComboboxLabel>{group.value}</ComboboxLabel>
+                      <ComboboxCollection>
+                        {(adminArea: AdminArea) => (
+                          <ComboboxItem key={adminArea.hash} value={adminArea}>
+                            {adminArea.name}
+                          </ComboboxItem>
+                        )}
+                      </ComboboxCollection>
+                      {index < groups.length - 1 && <ComboboxSeparator />}
+                    </ComboboxGroup>
                   )}
                 </ComboboxList>
               </ComboboxContent>
