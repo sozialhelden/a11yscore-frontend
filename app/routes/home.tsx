@@ -44,11 +44,24 @@ export function meta() {
   ];
 }
 
+const italianCities = new Set([
+  "Venezia",
+  "Roma",
+  "Napoli",
+  "Firenze",
+  "Milano",
+  "Lombardia",
+  "Veneto",
+]);
+
 export async function loader({ context }: Route.LoaderArgs) {
   const result = await apiFetch<AdminAreasResult>(context, `v1/admin-areas`);
   return result.adminAreas.map(
     (adminArea): AdminArea => ({
       ...adminArea,
+      name: italianCities.has(adminArea.name)
+        ? `${adminArea.name} (Italia)`
+        : adminArea.name,
       hash: encodeOsmId(adminArea.osmId),
     }),
   );
