@@ -39,7 +39,7 @@
     "@react-router/dev": "7.18.1",
     "@tailwindcss/typography": "0.5.20",
     "@tailwindcss/vite": "4.3.2",
-    "@transifex/cli": "7.1.6",
+    "@transifex/cli": "8.0.3",
     "@types/luxon": "3.7.2",
     "@types/node": "24.13.3",
     "@types/react": "19.2.17",
